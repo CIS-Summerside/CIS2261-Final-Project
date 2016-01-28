@@ -30,8 +30,6 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping(value = PATH)
     GeneralError error(HttpServletRequest request, HttpServletResponse response) {
-        // Appropriate HTTP response code (e.g. 404 or 500) is automatically set by Spring.
-        // Here we just define response body.
         return new GeneralError(response.getStatus(), getErrorAttributes(request, debug));
     }
 
