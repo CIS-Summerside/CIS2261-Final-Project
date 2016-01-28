@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: Connor
+Implementation-Vendor-Id: ApiServer
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_72
+Main-Class: api.App
+
