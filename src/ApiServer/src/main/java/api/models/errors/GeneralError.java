@@ -1,4 +1,6 @@
-package api.model.Errors;
+package api.models.errors;
+
+import api.models.base.ApiBase;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -6,7 +8,7 @@ import java.util.Map;
 /**
  * Created by Connor on 2016-01-27.
  */
-public class GeneralError {
+public class GeneralError extends ApiBase {
     public Integer status;
     public String error;
     public String message;

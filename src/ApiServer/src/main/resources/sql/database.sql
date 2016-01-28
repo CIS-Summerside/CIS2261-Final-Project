@@ -32,7 +32,7 @@ CREATE TABLE `test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `test`
+-- Dumping repositories for table `test`
 --
 
 INSERT INTO `test` (`num`, `id`) VALUES

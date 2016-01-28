@@ -1,6 +1,6 @@
-package api.data;
+package api.repositories;
 
-import api.model.Test;
+import api.models.data.Test;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

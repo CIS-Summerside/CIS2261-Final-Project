@@ -1,9 +1,11 @@
-package api.model;
+package api.models.errors;
+
+import api.models.base.ApiBase;
 
 /**
  * Created by Connor on 2016-01-28.
  */
-public class Information {
+public class Information extends ApiBase{
 
     private Integer statusCode;
     private String message;

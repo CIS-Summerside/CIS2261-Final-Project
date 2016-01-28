@@ -1,6 +1,6 @@
 package api.services;
 
-import api.model.Errors.GeneralError;
+import api.models.errors.GeneralError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;

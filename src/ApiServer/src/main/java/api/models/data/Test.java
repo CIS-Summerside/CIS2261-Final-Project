@@ -1,4 +1,6 @@
-package api.model;
+package api.models.data;
+
+import api.models.base.ApiBase;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,7 +10,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "test")
-public class Test implements Serializable {
+public class Test extends ApiBase implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
