@@ -89,7 +89,6 @@
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.190" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.36" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:9.4.1207.jre7" level="project" />
   </component>
 </module>

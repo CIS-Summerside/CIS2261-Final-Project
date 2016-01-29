@@ -1,6 +1,6 @@
 package api.repositories;
 
-import api.models.data.Test;
+import api.models.data.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by Connor on 2016-01-27.
  */
 @Repository
-public interface TestRepository extends CrudRepository<Test, Integer>{
+public interface UserRepository extends CrudRepository<User, Integer>{
 
-    Test findOneById(Integer id);
+    User findOneById(Integer id);
 }

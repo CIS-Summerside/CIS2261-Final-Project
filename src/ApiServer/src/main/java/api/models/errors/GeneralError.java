@@ -11,20 +11,17 @@ import java.util.Map;
 public class GeneralError extends ApiBase {
     public Integer status;
     public String error;
-    public String message;
     public String timeStamp;
 
     public GeneralError(int status, Map<String, Object> errorAttributes) {
         this.status = status;
         this.error = errorAttributes.get("error").toString();
-        this.message = errorAttributes.get("message").toString();
         this.timeStamp = LocalDateTime.now().toString();
     }
 
     public GeneralError(int status, String message){
         this.status = status;
         this.error = "";
-        this.message = message;
         this.timeStamp = LocalDateTime.now().toString();
     }
 
