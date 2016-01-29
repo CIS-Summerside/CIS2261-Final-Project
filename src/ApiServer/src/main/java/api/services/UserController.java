@@ -1,11 +1,9 @@
 package api.services;
 
 import api.models.data.User;
-import api.models.errors.GeneralError;
 import api.models.errors.Information;
 import api.repositories.UserRepository;
 import api.tools.PasswordTools;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +20,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * REST endpoint for getting information on user.
+     */
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public Object getUser(@PathVariable("id") final Integer id) {
         try {
@@ -32,6 +33,9 @@ public class UserController {
         }
     }
 
+    /**
+     * REST endpoint for adding a new user to the database.
+     */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addUser(@RequestBody User user) {
         try {
