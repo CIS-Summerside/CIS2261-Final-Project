@@ -4,10 +4,13 @@ import api.models.data.User;
 import api.models.errors.GeneralError;
 import api.models.errors.Information;
 import api.repositories.UserRepository;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import api.tools.PasswordTools;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 /**
  * Created by Connor on 2016-01-28.
@@ -22,19 +25,23 @@ public class UserController {
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public Object getUser(@PathVariable("id") final Integer id) {
         try {
-            return userRepository.findOneById(id);
+            User user = userRepository.findOneById(id);
+            return new ResponseEntity<>(user, HttpStatus.FOUND);
         } catch (Exception ex){
-            return new GeneralError(400, ex.toString());
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addUser(@RequestBody User user) {
         try {
+            user.setPasswordSalt(PasswordTools.generateSalt());
             userRepository.save(user);
-            return new Information(200, "Added to DB");
+
+            Information response = new Information(HttpStatus.CREATED.value(), "User was created");
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (Exception ex){
-            return new GeneralError(400, ex.toString());
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
 }

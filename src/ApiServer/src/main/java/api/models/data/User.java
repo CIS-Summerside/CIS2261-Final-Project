@@ -3,8 +3,10 @@ package api.models.data;
 import api.models.base.ApiBase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
@@ -23,31 +25,37 @@ public class User extends ApiBase {
 
     @Basic(optional = false)
     @Size(min = 1, max = 15)
+    @NotNull
     @Column(name = "username")
     private String username;
 
     @Basic(optional = false)
-    @Size(min = 16, max = 16)
+    @Size(min = 24, max = 24)
+    @NotNull
     @Column(name = "password_salt")
     private String passwordSalt;
 
     @Basic(optional = false)
     @Size(min = 64, max = 64)
+    @NotNull
     @Column(name = "password_hash")
     private String passwordHash;
 
     @Basic(optional = false)
     @Size(min = 7, max = 25)
+    @NotNull
     @Column(name = "email")
     private String email;
 
     @Basic(optional = false)
+    @NotNull
     @Column(name = "registration_date")
     private String regDate;
 
     public User(){
 
     }
+
 
     public Integer getId(){
         return this.id;
@@ -67,7 +75,7 @@ public class User extends ApiBase {
     public String getPasswordSalt(){
         return this.passwordSalt;
     }
-    @JsonProperty
+    @JsonIgnore
     public void setPasswordSalt(String passwordSalt){
         this.passwordSalt = passwordSalt;
     }
