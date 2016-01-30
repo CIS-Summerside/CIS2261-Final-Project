@@ -45,12 +45,11 @@ public class User extends ApiBase {
     @Column(name = "email")
     private String email;
 
-    /* I have no clue how dates work in JPA
     @Basic(optional = true)
     @Temporal(TemporalType.DATE)
     @Column(name = "registration_date", insertable = false, updatable = false)
     private Date regDate;
-    */
+
 
     public User(){
 
@@ -101,8 +100,8 @@ public class User extends ApiBase {
         this.email = email;
     }
 
-    //@JsonProperty
-    //public Date getRegDate(){
-    //    return this.regDate;
-    //}
+    @JsonProperty
+    public Date getRegDate(){
+        return this.regDate;
+    }
 }
