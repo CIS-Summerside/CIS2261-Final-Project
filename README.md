@@ -17,10 +17,12 @@ ___
 
 | Name            | Role  |
 | :-------------: | :---: |
-| Connor Oliver   | TBD   |
-| Jordan Campbell | TBD   |
-| David Campbell  | TBD   |
-| Anson Carmody   | TBD   |
+| Connor Oliver   | Project Manager  |
+| Jordan Campbell | System Analyst   |
+| David Campbell  | System Analyst   |
+| Anson Carmody   | System Analyst   |
+
+(we're all programming too...)
 
 ___
 
@@ -28,6 +30,6 @@ ___
 
 >Slack: https://summerside-project.slack.com/messages/general/ 
 >
->Git Repo: https://github.com/SkyLlama/CIS2261-Final-Project
+>Git Repo: https://github.com/CIS-Summerside/CIS2261-Final-Project
 
   
