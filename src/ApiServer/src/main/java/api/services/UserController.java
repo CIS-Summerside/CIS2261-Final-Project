@@ -24,7 +24,7 @@ public class UserController {
      * REST endpoint for getting information on user.
      */
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public Object getUser(@PathVariable("id") final Integer id) {
+    public Object getUser(@PathVariable("id") final Long id) {
         try {
             User user = userRepository.findOneByUserId(id);
             return new ResponseEntity<>(user, HttpStatus.FOUND);
