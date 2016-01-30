@@ -26,7 +26,7 @@ public class UserController {
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public Object getUser(@PathVariable("id") final Integer id) {
         try {
-            User user = userRepository.findOneById(id);
+            User user = userRepository.findOneByUserId(id);
             return new ResponseEntity<>(user, HttpStatus.FOUND);
         } catch (Exception ex){
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);

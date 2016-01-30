@@ -3,12 +3,10 @@ package api.models.data;
 import api.models.base.ApiBase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.beans.factory.annotation.Required;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Connor on 2016-01-28.
@@ -20,8 +18,8 @@ public class User extends ApiBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "user_id")
+    private Long userId;
 
     @Basic(optional = false)
     @Size(min = 1, max = 15)
@@ -47,26 +45,29 @@ public class User extends ApiBase {
     @Column(name = "email")
     private String email;
 
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "registration_date")
-    private String regDate;
+    @Basic(optional = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "registration_date", insertable = false, updatable = false)
+    private Date regDate;
 
     public User(){
 
     }
 
-
-    public Integer getId(){
-        return this.id;
+    @JsonProperty
+    public Long getId(){
+        return this.userId;
     }
-    public void setId(Integer id){
-        this.id = id;
+    @JsonIgnore
+    public void setId(Long userId){
+        this.userId = userId;
     }
 
+    @JsonProperty
     public String getUsername(){
         return this.username;
     }
+    @JsonProperty
     public void setUsername(String username){
         this.username = username;
     }
@@ -98,10 +99,12 @@ public class User extends ApiBase {
         this.email = email;
     }
 
-    public String getRegDate(){
+    @JsonProperty
+    public Date getRegDate(){
         return this.regDate;
     }
-    public void setRegDate(String regDate){
+    @JsonIgnore
+    public void setRegDate(Date regDate){
         this.regDate = regDate;
     }
 }

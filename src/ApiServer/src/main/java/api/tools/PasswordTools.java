@@ -37,7 +37,7 @@ public class PasswordTools {
      * @param  passwordSalt  Salt for the user's password
      * @return      SHA-256 hash of Password Salt + Password Hash
      */
-    public static String saltedPassHash(String passwordHash, String passwordSalt) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static String hashSaltedPass(String passwordHash, String passwordSalt) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         String saltPass = passwordSalt + passwordHash;
         md.update(saltPass.getBytes("UTF-8"));
