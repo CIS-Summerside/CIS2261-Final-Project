@@ -1,6 +1,6 @@
 package api.models.data;
 
-import api.models.base.ApiBase;
+import api.models.base.ApiResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "useragents")
-public class UserAgent extends ApiBase{
+public class UserAgent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
