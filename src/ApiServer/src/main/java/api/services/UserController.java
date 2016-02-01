@@ -27,19 +27,15 @@ public class UserController {
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public Object getUser(@PathVariable("id") final Long id) {
         Object response;
-        HttpStatus statusCode;
         User user = ur.findOneByUserId(id);
 
         if(user != null){
-            statusCode = HttpStatus.OK;
-            response =  new ApiResponse(statusCode.value(), user);
+            response =  new ApiResponse(HttpStatus.OK.value(), user);
         } else {
-            Info info = new Info("No user found by ID");
-            statusCode = HttpStatus.NOT_FOUND;
-            response = new ApiResponse(statusCode.value(), info);
+            response = new ApiResponse(HttpStatus.NOT_FOUND.value(), new Info("No user found by ID"));
         }
 
-        return new ResponseEntity<>(response, statusCode);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -47,19 +43,36 @@ public class UserController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addUser(@RequestBody User user) {
-        Object response;
+        ApiResponse response;
         HttpStatus statusCode;
 
         try {
-            user.setPasswordSalt(PasswordTools.generateSalt());
-            ur.save(user);
-            statusCode = HttpStatus.CREATED;
-            response =  new ApiResponse(statusCode.value(), user);
+            if(ur.findOneByUsername(user.getUsername()) == null){
+                response = saveUser(user);
+            } else {
+                response = userExists();
+            }
         } catch (Exception ex){
-            statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            response = new ApiResponse(statusCode.value(), new Info("Failed to create user"));
+            response = userCreationFailed();
         }
 
-        return new ResponseEntity<>(response, statusCode);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    public ApiResponse saveUser(User user){
+        user.setPasswordSalt(PasswordTools.generateSalt());
+        ur.save(user);
+        HttpStatus statusCode = HttpStatus.CREATED;
+        return new ApiResponse(statusCode.value(), user);
+    }
+
+    public ApiResponse userExists(){
+        HttpStatus statusCode = HttpStatus.CONFLICT;
+        return new ApiResponse(statusCode.value(), new Info("User Already Exists"));
+    }
+
+    public ApiResponse userCreationFailed(){
+        HttpStatus statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+        return new ApiResponse(statusCode.value(), new Info("Failed To Add User"));
     }
 }
