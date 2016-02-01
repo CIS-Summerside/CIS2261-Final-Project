@@ -26,7 +26,7 @@ public class UserController {
      */
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     public Object getUser(@PathVariable("id") final Long id) {
-        Object response;
+        ApiResponse response;
         User user = ur.findOneByUserId(id);
 
         if(user != null){
