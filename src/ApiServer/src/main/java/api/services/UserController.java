@@ -48,15 +48,18 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addUser(@RequestBody User user) {
         Object response;
+        HttpStatus statusCode;
+
         try {
             user.setPasswordSalt(PasswordTools.generateSalt());
             ur.save(user);
-
-            response =  new ApiResponse(HttpStatus.CREATED.value(), ur.findOne(user.getId()));
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
+            statusCode = HttpStatus.CREATED;
+            response =  new ApiResponse(statusCode.value(), user);
         } catch (Exception ex){
-            response = new Info("Failed to create user");
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+            response = new ApiResponse(statusCode.value(), new Info("Failed to create user"));
         }
+
+        return new ResponseEntity<>(response, statusCode);
     }
 }
