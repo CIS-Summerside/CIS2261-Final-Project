@@ -59,19 +59,19 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    public ApiResponse saveUser(User user){
+    private ApiResponse saveUser(User user){
         user.setPasswordSalt(PasswordTools.generateSalt());
         ur.save(user);
         HttpStatus statusCode = HttpStatus.CREATED;
         return new ApiResponse(statusCode.value(), user);
     }
 
-    public ApiResponse userExists(){
+    private ApiResponse userExists(){
         HttpStatus statusCode = HttpStatus.CONFLICT;
         return new ApiResponse(statusCode.value(), new Info("User Already Exists"));
     }
 
-    public ApiResponse userCreationFailed(){
+    private ApiResponse userCreationFailed(){
         HttpStatus statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
         return new ApiResponse(statusCode.value(), new Info("Failed To Add User"));
     }
