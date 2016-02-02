@@ -44,7 +44,6 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addUser(@RequestBody User user) {
         ApiResponse response;
-        HttpStatus statusCode;
 
         try {
             if(ur.findOneByUsername(user.getUsername()) == null){
