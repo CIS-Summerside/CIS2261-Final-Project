@@ -1,4 +1,4 @@
-package api.services;
+package api.services.users;
 
 import api.models.base.ApiResponse;
 import api.models.data.User;
@@ -6,6 +6,7 @@ import api.models.errors.Info;
 import api.repositories.UserRepository;
 import api.tools.PasswordTools;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,6 @@ public class UserController {
         } else {
             response = new ApiResponse(HttpStatus.NOT_FOUND.value(), new Info("No user found by ID"));
         }
-
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
