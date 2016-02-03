@@ -1,4 +1,4 @@
-package api.services;
+package api.services.other;
 
 import api.models.errors.GeneralError;
 import org.springframework.beans.factory.annotation.Autowired;

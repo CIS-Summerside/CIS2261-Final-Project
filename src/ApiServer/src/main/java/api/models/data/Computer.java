@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
  * Created by Connor on 2016-01-30.
@@ -38,11 +39,15 @@ public class Computer {
     @Column(name = "operating_system")
     private String operatingSystem;
 
-    @Basic(optional = false)
-    @Size(min = 1, max = 15)
-    @NotNull
-    @Column(name = "log_date")
-    private String logDate;
+    @Basic(optional = true)
+    @Temporal(TemporalType.TIME)
+    @Column(name = "log_time", insertable = false, updatable = false)
+    private Date logTime;
+
+    @Basic(optional = true)
+    @Temporal(TemporalType.DATE)
+    @Column(name = "log_date", insertable = false, updatable = false)
+    private Date logDate;
 
     public Computer(){
 
@@ -85,11 +90,12 @@ public class Computer {
     }
 
     @JsonIgnore
-    public String getLogDate(){
-        return this.logDate;
+    public Date getLogDate() {
+        return logDate;
     }
-    @JsonProperty
-    public void setLogDate(String logDate){
-        this.logDate = logDate;
+
+    @JsonIgnore
+    public Date getLogTime() {
+        return logTime;
     }
 }

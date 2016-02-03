@@ -55,7 +55,7 @@ public class AuthenticationController {
                 response = new ApiResponse(HttpStatus.NOT_FOUND.value(), new Info("No user found by ID"));
             }
         } catch (Exception ex){
-            response = new ApiResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), new Info("Something went wrong"));
+            response = new ApiResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), new Info("Failed to process Login"));
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
