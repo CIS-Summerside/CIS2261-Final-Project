@@ -22,7 +22,7 @@ public class User {
     private Long userId;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 15)
+    @Size(min = 4, max = 15)
     @NotNull
     @Column(name = "username")
     private String username;
