@@ -30,7 +30,8 @@ public class ComputerController {
         ApiResponse response;
 
         cr.save(computer);
+        response = new ApiResponse(HttpStatus.OK.value(), new Info("Added Computer"));
 
-        return new ApiResponse(HttpStatus.I_AM_A_TEAPOT.value(), new Info("User Already Exists"));
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

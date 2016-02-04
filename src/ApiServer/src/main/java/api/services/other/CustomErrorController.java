@@ -1,10 +1,13 @@
 package api.services.other;
 
+import api.models.base.ApiResponse;
 import api.models.errors.GeneralError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestAttributes;
@@ -29,8 +32,10 @@ public class CustomErrorController implements ErrorController {
     private ErrorAttributes errorAttributes;
 
     @RequestMapping(value = PATH)
-    GeneralError error(HttpServletRequest request, HttpServletResponse response) {
-        return new GeneralError(response.getStatus(), getErrorAttributes(request, debug));
+    Object error(HttpServletRequest request, HttpServletResponse response) {
+        GeneralError error = new GeneralError(getErrorAttributes(request, debug));
+        ApiResponse respError = new ApiResponse(response.getStatus(), error);
+        return new ResponseEntity<>(respError, HttpStatus.OK);
     }
 
     @Override

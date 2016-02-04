@@ -40,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/api/services/users/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="83" />
+              <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,23 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputerController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/metrics/ComputerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5710754">
-              <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Computer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/models/data/Computer.java">
+      <file leaf-file-name="GeneralError.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/models/errors/GeneralError.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomErrorController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/other/CustomErrorController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54511744">
+              <caret line="36" column="68" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -99,8 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/api/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/model/errors/NotFound404.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/model/Errors.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/model/TestRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/data/TestRepository.java" />
@@ -133,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/main/java/api/models/data/test/ReturnData.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/models/data/Download.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/models/data/UserAgent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/models/errors/GeneralError.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/models/data/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/models/errors/Information.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/ErrorController.java" />
@@ -141,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/java/api/models/errors/Info.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/repositories/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/services/users/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/tools/PasswordTools.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/models/data/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/repositories/TokenRepository.java" />
@@ -149,7 +143,11 @@
         <option value="$PROJECT_DIR$/src/main/java/api/services/tracking.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/models/data/Computer.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/tracking/ComputerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/metrics/UserAgentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/metrics/ComputerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/users/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/models/errors/GeneralError.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/other/CustomErrorController.java" />
       </list>
     </option>
   </component>
@@ -362,6 +360,10 @@
               <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="other" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -460,6 +462,10 @@
               <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="errors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -492,6 +498,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApiServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApiServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -889,12 +925,12 @@
       <workItem from="1454424799625" duration="129000" />
       <workItem from="1454428829897" duration="1517000" />
       <workItem from="1454511229152" duration="12011000" />
-      <workItem from="1454542230203" duration="1420000" />
+      <workItem from="1454542230203" duration="3991000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88988000" />
+    <option name="totallyTimeSpent" value="91559000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -914,11 +950,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26157597" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33631194" sideWeight="0.50190294" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31275386" sideWeight="0.50428164" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32968602" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31275386" sideWeight="0.49710983" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31275386" sideWeight="0.49571836" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.49809706" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -961,16 +997,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/users/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/repositories/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1303,24 +1329,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/models/errors/GeneralError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028475711">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/other/CustomErrorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45561138">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/repositories/TokenRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22780569">
@@ -1347,14 +1355,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/metrics/UserAgentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09966499">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/models/data/Token.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5125628">
@@ -1373,10 +1373,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/users/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/metrics/UserAgentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="83" />
+          <caret line="33" column="84" selection-start-line="33" selection-start-column="84" selection-end-line="33" selection-end-column="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/metrics/ComputerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80964154">
+          <caret line="32" column="82" selection-start-line="32" selection-start-column="82" selection-end-line="32" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1385,19 +1395,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/models/data/Computer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.14709517">
           <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/metrics/ComputerController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/models/data/UserAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5710754">
-          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.18912238">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/users/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/models/errors/GeneralError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/other/CustomErrorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54511744">
+          <caret line="36" column="68" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
