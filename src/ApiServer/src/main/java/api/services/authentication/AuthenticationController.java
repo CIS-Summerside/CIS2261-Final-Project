@@ -1,6 +1,6 @@
 package api.services.authentication;
 
-import api.responses.ApiResponse;
+import api.responses.BaseResponse;
 import api.models.data.Token;
 import api.models.data.User;
 import api.models.errors.Info;
@@ -30,7 +30,7 @@ public class AuthenticationController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Object loginUser(@RequestBody User login) {
-        ApiResponse response;
+        BaseResponse response;
         User user = ur.findOneByUsername(login.getUsername());
         Token existingToken = tr.findOneByUserId(user.getId());
 
@@ -44,18 +44,18 @@ public class AuthenticationController {
                         Token token = new Token(user.getId());
                         tr.save(token);
 
-                        response = new ApiResponse(HttpStatus.OK.value(), token);
+                        response = new BaseResponse(HttpStatus.OK, token);
                     } else {
-                        response = new ApiResponse(HttpStatus.OK.value(), new Info("Incorrect Password"));
+                        response = new BaseResponse(HttpStatus.OK, new Info("Incorrect Password"));
                     }
                 } else{
-                    response = new ApiResponse(HttpStatus.OK.value(), new Info("Already logged in"));
+                    response = new BaseResponse(HttpStatus.OK, new Info("Already logged in"));
                 }
             } else {
-                response = new ApiResponse(HttpStatus.NOT_FOUND.value(), new Info("No user found by ID"));
+                response = new BaseResponse(HttpStatus.NOT_FOUND, new Info("No user found by ID"));
             }
         } catch (Exception ex){
-            response = new ApiResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), new Info("Failed to process Login"));
+            response = new BaseResponse(HttpStatus.INTERNAL_SERVER_ERROR, new Info("Failed to process Login"));
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -66,10 +66,10 @@ public class AuthenticationController {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public Object loginUser(@RequestHeader("Token") String token) {
-        ApiResponse response;
+        BaseResponse response;
         Token existingToken = tr.findOneByToken(token);
         tr.delete(existingToken);
-        response = new ApiResponse(HttpStatus.OK.value(), new Info("Logged out"));
+        response = new BaseResponse(HttpStatus.OK, new Info("Logged out"));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

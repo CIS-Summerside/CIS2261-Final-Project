@@ -1,16 +1,18 @@
 package api.responses;
 
+import org.springframework.http.HttpStatus;
+
 /**
  * Created by Connor on 2016-01-28.
  */
-public class ApiResponse {
+public class BaseResponse {
     private String version = "0.1";
     private Integer status = 0;
     private String terms = "http://www.google.com/terms";
     private Object data;
 
-    public ApiResponse(Integer status, Object data){
-        this.status = status;
+    public BaseResponse(HttpStatus status, Object data){
+        this.status = status.value();
         this.data = data;
     }
 

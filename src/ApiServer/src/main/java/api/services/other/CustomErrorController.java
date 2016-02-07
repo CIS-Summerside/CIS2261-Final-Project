@@ -1,6 +1,6 @@
 package api.services.other;
 
-import api.responses.ApiResponse;
+import api.responses.BaseResponse;
 import api.models.errors.GeneralError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +34,7 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping(value = PATH)
     Object error(HttpServletRequest request, HttpServletResponse response) {
         GeneralError error = new GeneralError(getErrorAttributes(request, debug));
-        ApiResponse respError = new ApiResponse(response.getStatus(), error);
+        BaseResponse respError = new BaseResponse(HttpStatus.INTERNAL_SERVER_ERROR, error);
         return new ResponseEntity<>(respError, HttpStatus.OK);
     }
 

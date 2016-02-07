@@ -1,6 +1,6 @@
 package api.services.metrics;
 
-import api.responses.ApiResponse;
+import api.responses.BaseResponse;
 import api.models.authentication.Authentication;
 import api.models.data.Computer;
 import api.models.errors.Info;
@@ -26,13 +26,13 @@ public class ComputerController extends Authentication{
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addComputer(HttpServletRequest request, @RequestBody Computer computer) {
-        ApiResponse response;
+        BaseResponse response;
 
         if(super.getBasicAuth(request.getHeader("token"))) {
             cr.save(computer);
-            response = new ApiResponse(HttpStatus.OK.value(), new Info("Added Computer"));
+            response = new BaseResponse(HttpStatus.OK, new Info("Added Computer"));
         } else {
-            response = new ApiResponse(HttpStatus.UNAUTHORIZED.value(), new Info("Authentication Required"));
+            response = new BaseResponse(HttpStatus.UNAUTHORIZED, new Info("Authentication Required"));
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);

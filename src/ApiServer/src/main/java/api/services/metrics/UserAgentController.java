@@ -1,7 +1,7 @@
 package api.services.metrics;
 
 import api.models.authentication.Authentication;
-import api.responses.ApiResponse;
+import api.responses.BaseResponse;
 import api.models.data.UserAgent;
 import api.models.errors.Info;
 import api.repositories.UserAgentRepository;
@@ -29,13 +29,13 @@ public class UserAgentController extends Authentication{
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addAgent(HttpServletRequest request, @RequestBody UserAgent agent) {
-        ApiResponse response;
+        BaseResponse response;
 
         if(super.getBasicAuth(request.getHeader("token"))) {
             uar.save(agent);
-            response = new ApiResponse(HttpStatus.OK.value(), new Info("Added User Agent"));
+            response = new BaseResponse(HttpStatus.OK, new Info("Added User Agent"));
         } else {
-            response = new ApiResponse(HttpStatus.UNAUTHORIZED.value(), new Info("Authentication Required"));
+            response = new BaseResponse(HttpStatus.UNAUTHORIZED, new Info("Authentication Required"));
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
