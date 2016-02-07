@@ -3,14 +3,15 @@ package api.services.authentication;
 import api.responses.BaseResponse;
 import api.models.data.Token;
 import api.models.data.User;
-import api.models.errors.Info;
 import api.repositories.TokenRepository;
 import api.repositories.UserRepository;
+import api.responses.ResponseFactory;
 import api.tools.PasswordTools;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -29,36 +30,28 @@ public class AuthenticationController {
      * REST endpoint for logging in a user and returning a token.
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Object loginUser(@RequestBody User login) {
-        BaseResponse response;
+    public Object loginUser(@RequestBody User login) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = ur.findOneByUsername(login.getUsername());
         Token existingToken = tr.findOneByUserId(user.getId());
 
-        try {
-            if (user != null) {
-                if(existingToken == null) {
-                    String providedData = PasswordTools.sha256Hash(user.getPasswordSalt() + login.getPasswordHash());
-                    String storedData = PasswordTools.sha256Hash(user.getPasswordSalt() + user.getPasswordHash());
 
-                    if (providedData.equals(storedData)) {
-                        Token token = new Token(user.getId());
-                        tr.save(token);
+        if((user != null ) && (existingToken == null)){
+            String providedData = PasswordTools.sha256Hash(user.getPasswordSalt() + login.getPasswordHash());
+            String storedData = PasswordTools.sha256Hash(user.getPasswordSalt() + user.getPasswordHash());
 
-                        response = new BaseResponse(HttpStatus.OK, token);
-                    } else {
-                        response = new BaseResponse(HttpStatus.OK, new Info("Incorrect Password"));
-                    }
-                } else{
-                    response = new BaseResponse(HttpStatus.OK, new Info("Already logged in"));
-                }
+            if (providedData.equals(storedData)) {
+                Token token = new Token(user.getId());
+                tr.save(token);
+
+                return ResponseFactory.okResponse(new BaseResponse(token));
             } else {
-                response = new BaseResponse(HttpStatus.NOT_FOUND, new Info("No user found by ID"));
+                return ResponseFactory.authErrorResponse(new BaseResponse("Incorrect Password"));
             }
-        } catch (Exception ex){
-            response = new BaseResponse(HttpStatus.INTERNAL_SERVER_ERROR, new Info("Failed to process Login"));
+        } else if (existingToken != null){
+            return ResponseFactory.okResponse(new BaseResponse("Already logged in"));
+        } else {
+            return ResponseFactory.notFoundResponse(new BaseResponse("No user found by ID"));
         }
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -66,10 +59,8 @@ public class AuthenticationController {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public Object loginUser(@RequestHeader("Token") String token) {
-        BaseResponse response;
         Token existingToken = tr.findOneByToken(token);
         tr.delete(existingToken);
-        response = new BaseResponse(HttpStatus.OK, new Info("Logged out"));
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseFactory.okResponse(new BaseResponse("Logged out"));
     }
 }

@@ -1,13 +1,12 @@
 package api.services.metrics;
 
 import api.models.authentication.Authentication;
+import api.responses.ApiResponseEntity;
 import api.responses.BaseResponse;
 import api.models.data.UserAgent;
-import api.models.errors.Info;
 import api.repositories.UserAgentRepository;
+import api.responses.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,17 +27,14 @@ public class UserAgentController extends Authentication{
     UserAgentRepository uar;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object addAgent(HttpServletRequest request, @RequestBody UserAgent agent) {
+    public ApiResponseEntity<BaseResponse> addAgent(HttpServletRequest request, @RequestBody UserAgent agent) {
         BaseResponse response;
 
         if(super.getBasicAuth(request.getHeader("token"))) {
             uar.save(agent);
-            response = new BaseResponse(HttpStatus.OK, new Info("Added User Agent"));
-        } else {
-            response = new BaseResponse(HttpStatus.UNAUTHORIZED, new Info("Authentication Required"));
-        }
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
+            response = new BaseResponse("Added User Agent");
+            return ResponseFactory.createdResponse(response);
+        } else return ResponseFactory.unauthorizedResponse();
     }
 }
 

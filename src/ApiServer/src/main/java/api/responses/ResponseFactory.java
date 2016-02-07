@@ -1,6 +1,5 @@
 package api.responses;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -24,7 +23,15 @@ public class ResponseFactory {
         return new ApiResponseEntity<T>(body, HttpStatus.NOT_FOUND);
     }
 
-    public static <T> ApiResponseEntity<T> unauthorizedResponse(T body){
+    public static <T> ApiResponseEntity<T> okResponse(T body){
+        return new ApiResponseEntity<T>(body, HttpStatus.OK);
+    }
+
+    public static <T> ApiResponseEntity<T> authErrorResponse(T body){
         return new ApiResponseEntity<T>(body, HttpStatus.UNAUTHORIZED);
+    }
+
+    public static <T> ApiResponseEntity<T> unauthorizedResponse(){
+        return new ApiResponseEntity<T>((T) new BaseResponse("Authentication Required"), HttpStatus.UNAUTHORIZED);
     }
 }

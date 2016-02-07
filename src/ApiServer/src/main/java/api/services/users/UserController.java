@@ -2,14 +2,11 @@ package api.services.users;
 
 import api.responses.BaseResponse;
 import api.models.data.User;
-import api.models.errors.Info;
 import api.repositories.UserRepository;
 import api.responses.ApiResponseEntity;
 import api.responses.ResponseFactory;
 import api.tools.PasswordTools;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -31,9 +28,9 @@ public class UserController {
         User user = ur.findOneByUserId(id);
 
         if(user != null){
-            return ResponseFactory.foundResponse(new BaseResponse(HttpStatus.FOUND, user));
+            return ResponseFactory.foundResponse(new BaseResponse(user));
         } else {
-            return ResponseFactory.notFoundResponse(new BaseResponse(HttpStatus.NOT_FOUND, new Info("No user found by ID")));
+            return ResponseFactory.notFoundResponse(new BaseResponse("No user found by ID"));
         }
     }
 
@@ -47,11 +44,10 @@ public class UserController {
         if(ur.findOneByUsername(user.getUsername()) == null){
             user.setPasswordSalt(PasswordTools.generateSalt());
             ur.save(user);
-            response = new BaseResponse(HttpStatus.CREATED, user);
+            response = new BaseResponse(user);
             return ResponseFactory.createdResponse(response);
         } else {
-            response = new BaseResponse(HttpStatus.FOUND, new Info("User Already Exists"));
-            return ResponseFactory.foundResponse(response);
+            return ResponseFactory.foundResponse(new BaseResponse("User Already Exists"));
         }
     }
 }

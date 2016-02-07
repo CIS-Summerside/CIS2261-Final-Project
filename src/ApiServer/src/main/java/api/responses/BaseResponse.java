@@ -1,27 +1,23 @@
 package api.responses;
 
-import org.springframework.http.HttpStatus;
-
 /**
  * Created by Connor on 2016-01-28.
  */
-public class BaseResponse {
+public class BaseResponse<T> {
     private String version = "0.1";
-    private Integer status = 0;
     private String terms = "http://www.google.com/terms";
     private Object data;
 
-    public BaseResponse(HttpStatus status, Object data){
-        this.status = status.value();
+    public BaseResponse(Object data){
         this.data = data;
+    }
+
+    public BaseResponse(){
+
     }
 
     public String getVersion(){
         return this.version;
-    }
-
-    public Integer getStatus() {
-        return status;
     }
 
     public String getTerms() {
@@ -30,5 +26,9 @@ public class BaseResponse {
 
     public Object getData() {
         return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }
