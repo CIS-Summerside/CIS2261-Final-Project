@@ -1,7 +1,5 @@
 package api.models.errors;
 
-import api.models.base.ApiResponse;
-
 import java.time.LocalDateTime;
 import java.util.Map;
 

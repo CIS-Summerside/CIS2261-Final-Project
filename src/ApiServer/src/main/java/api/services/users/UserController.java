@@ -1,9 +1,11 @@
 package api.services.users;
 
-import api.models.base.ApiResponse;
+import api.responses.ApiResponse;
 import api.models.data.User;
 import api.models.errors.Info;
 import api.repositories.UserRepository;
+import api.responses.ApiResponseEntity;
+import api.responses.ResponseFactory;
 import api.tools.PasswordTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,16 +27,14 @@ public class UserController {
      * REST endpoint for getting information on user.
      */
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public Object getUser(@PathVariable("id") final Long id) {
-        ApiResponse response;
+    public ApiResponseEntity<ApiResponse> getUser(@PathVariable("id") final Long id) {
         User user = ur.findOneByUserId(id);
 
         if(user != null){
-            response =  new ApiResponse(HttpStatus.OK.value(), user);
+            return ResponseFactory.foundResponse(new ApiResponse(HttpStatus.FOUND.value(), user));
         } else {
-            response = new ApiResponse(HttpStatus.NOT_FOUND.value(), new Info("No user found by ID"));
+            return ResponseFactory.notFoundResponse(new ApiResponse(HttpStatus.NOT_FOUND.value(), new Info("No user found by ID")));
         }
-        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**

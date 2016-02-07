@@ -1,6 +1,6 @@
 package api.services.other;
 
-import api.models.base.ApiResponse;
+import api.responses.ApiResponse;
 import api.models.errors.GeneralError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

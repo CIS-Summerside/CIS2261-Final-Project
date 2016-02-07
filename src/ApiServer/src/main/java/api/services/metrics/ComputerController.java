@@ -1,6 +1,6 @@
 package api.services.metrics;
 
-import api.models.base.ApiResponse;
+import api.responses.ApiResponse;
 import api.models.authentication.Authentication;
 import api.models.data.Computer;
 import api.models.errors.Info;

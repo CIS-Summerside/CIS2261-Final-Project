@@ -1,6 +1,6 @@
 package api.services.authentication;
 
-import api.models.base.ApiResponse;
+import api.responses.ApiResponse;
 import api.models.data.Token;
 import api.models.data.User;
 import api.models.errors.Info;
@@ -69,7 +69,7 @@ public class AuthenticationController {
         ApiResponse response;
         Token existingToken = tr.findOneByToken(token);
         tr.delete(existingToken);
-        response = new ApiResponse(HttpStatus.OK.value(), new Info("Delete Token"));
+        response = new ApiResponse(HttpStatus.OK.value(), new Info("Logged out"));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

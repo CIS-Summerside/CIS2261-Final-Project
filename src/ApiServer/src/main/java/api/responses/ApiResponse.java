@@ -1,4 +1,4 @@
-package api.models.base;
+package api.responses;
 
 /**
  * Created by Connor on 2016-01-28.

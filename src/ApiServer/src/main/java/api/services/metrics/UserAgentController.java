@@ -1,11 +1,9 @@
 package api.services.metrics;
 
 import api.models.authentication.Authentication;
-import api.models.base.ApiResponse;
-import api.models.data.Computer;
+import api.responses.ApiResponse;
 import api.models.data.UserAgent;
 import api.models.errors.Info;
-import api.repositories.ComputerRepository;
 import api.repositories.UserAgentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
