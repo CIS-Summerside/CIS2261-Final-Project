@@ -3,7 +3,7 @@ package api.responses;
 /**
  * Created by Connor on 2016-01-28.
  */
-public class BaseResponse<T> {
+public class BaseResponse {
     private String version = "0.1";
     private String terms = "http://www.google.com/terms";
     private Object data;

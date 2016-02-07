@@ -39,13 +39,10 @@ public class UserController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object addUser(@RequestBody User user) {
-        BaseResponse response;
-
         if(ur.findOneByUsername(user.getUsername()) == null){
             user.setPasswordSalt(PasswordTools.generateSalt());
             ur.save(user);
-            response = new BaseResponse(user);
-            return ResponseFactory.createdResponse(response);
+            return ResponseFactory.createdResponse(new BaseResponse(user));
         } else {
             return ResponseFactory.foundResponse(new BaseResponse("User Already Exists"));
         }
