@@ -21,10 +21,8 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("/api/user")
 public class AuthenticationController {
 
-    @Autowired
-    private UserRepository ur;
-    @Autowired
-    private TokenRepository tr;
+    @Autowired private UserRepository ur;
+    @Autowired private TokenRepository tr;
 
     /**
      * REST endpoint for logging in a user and returning a token.
@@ -35,7 +33,7 @@ public class AuthenticationController {
         Token existingToken = tr.findOneByUserId(user.getId());
 
 
-        if((user != null ) && (existingToken == null)){
+        if ((user != null) && (existingToken == null)){
             String providedData = PasswordTools.sha256Hash(user.getPasswordSalt() + login.getPasswordHash());
             String storedData = PasswordTools.sha256Hash(user.getPasswordSalt() + user.getPasswordHash());
 

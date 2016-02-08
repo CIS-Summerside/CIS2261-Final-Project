@@ -1,5 +1,6 @@
 package api.services.files;
 
+import api.models.authentication.Authentication;
 import api.models.data.File;
 import api.repositories.FileRepository;
 import api.responses.ApiResponseEntity;
@@ -7,13 +8,18 @@ import api.responses.BaseResponse;
 import api.responses.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 
 /**
  * Created by Connor on 2016-02-07.
  */
 @RestController
 @RequestMapping("/api/files")
-public class FileController {
+public class FileController extends Authentication{
 
     @Autowired FileRepository fr;
 
@@ -26,5 +32,13 @@ public class FileController {
         } else {
             return ResponseFactory.notFoundResponse(new BaseResponse("No user found by ID"));
         }
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ApiResponseEntity<BaseResponse> addFileDetails(HttpServletRequest request, @RequestBody File file){
+        if(super.getBasicAuth(request.getHeader("token"))) {
+            fr.save(file);
+            return ResponseFactory.createdResponse(new BaseResponse("Added File Details"));
+        } else return ResponseFactory.unauthorizedResponse();
     }
 }
