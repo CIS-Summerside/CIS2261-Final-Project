@@ -36,6 +36,10 @@ public class Upload {
     @JoinColumn(name = "user_id")
     private User userId;
 
+    public Upload(){
+
+    }
+
     @JsonIgnore
     public Long getUploadId() {
         return uploadId;
