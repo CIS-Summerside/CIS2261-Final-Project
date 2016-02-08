@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserController {
 
-    @Autowired
-    private UserRepository ur;
+    @Autowired private UserRepository ur;
 
     /**
      * REST endpoint for getting information on user.

@@ -23,8 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api/metrics/agent")
 public class UserAgentController extends Authentication{
 
-    @Autowired
-    UserAgentRepository uar;
+    @Autowired UserAgentRepository uar;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ApiResponseEntity<BaseResponse> addAgent(HttpServletRequest request, @RequestBody UserAgent agent) {

@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
  * Created by Connor on 2016-01-30.
  */
 @Entity
-@Table(name = "file_details")
+@Table(name = "reports")
 public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,6 @@ public class Report {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "file_id")
-    //@Column(name = "file_id")
     private File fileId;
 
     @Basic(optional = false)

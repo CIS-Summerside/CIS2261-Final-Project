@@ -20,8 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api/metrics/computer")
 public class ComputerController extends Authentication{
 
-    @Autowired
-    ComputerRepository cr;
+    @Autowired ComputerRepository cr;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ApiResponseEntity<BaseResponse> addComputer(HttpServletRequest request, @RequestBody Computer computer) {
