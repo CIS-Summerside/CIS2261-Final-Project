@@ -23,13 +23,10 @@ public class ComputerController extends Authentication{
     @Autowired ComputerRepository cr;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ApiResponseEntity<BaseResponse> addComputer(HttpServletRequest request, @RequestBody Computer computer) {
-        BaseResponse response;
-
+    public ApiResponseEntity addComputer(HttpServletRequest request, @RequestBody Computer computer) {
         if(super.getBasicAuth(request.getHeader("token"))) {
             cr.save(computer);
-            response = new BaseResponse("Added Computer");
-            return ResponseFactory.createdResponse(response);
+            return ResponseFactory.createdResponse("Added Computer");
         } else return ResponseFactory.unauthorizedResponse();
     }
 }

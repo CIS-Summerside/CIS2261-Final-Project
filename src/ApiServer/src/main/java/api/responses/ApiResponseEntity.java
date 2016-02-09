@@ -7,9 +7,9 @@ import org.springframework.http.ResponseEntity;
 /**
  * Created by Connor on 2016-02-06.
  */
-public class ApiResponseEntity<T> extends ResponseEntity<T> {
+public class ApiResponseEntity<T> extends ResponseEntity<BaseResponse> {
 
     public ApiResponseEntity(T body, HttpStatus status){
-        super(body, status);
+        super(new BaseResponse(body), status);
     }
 }

@@ -23,13 +23,13 @@ public class UserController {
      * REST endpoint for getting information on user.
      */
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public ApiResponseEntity<BaseResponse> getUser(@PathVariable("id") final Long id) {
+    public ApiResponseEntity getUser(@PathVariable("id") final Long id) {
         User user = ur.findOneByUserId(id);
 
         if(user != null){
-            return ResponseFactory.foundResponse(new BaseResponse(user));
+            return ResponseFactory.foundResponse(user);
         } else {
-            return ResponseFactory.notFoundResponse(new BaseResponse("No user found by ID"));
+            return ResponseFactory.notFoundResponse("No user found by ID");
         }
     }
 
@@ -37,13 +37,13 @@ public class UserController {
      * REST endpoint for adding a new user to the database.
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public Object addUser(@RequestBody User user) {
+    public ApiResponseEntity addUser(@RequestBody User user) {
         if(ur.findOneByUsername(user.getUsername()) == null){
             user.setPasswordSalt(PasswordTools.generateSalt());
             ur.save(user);
-            return ResponseFactory.createdResponse(new BaseResponse(user));
+            return ResponseFactory.createdResponse(user);
         } else {
-            return ResponseFactory.foundResponse(new BaseResponse("User Already Exists"));
+            return ResponseFactory.foundResponse("User Already Exists");
         }
     }
 }

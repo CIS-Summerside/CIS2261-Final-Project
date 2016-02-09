@@ -26,13 +26,10 @@ public class UserAgentController extends Authentication{
     @Autowired UserAgentRepository uar;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ApiResponseEntity<BaseResponse> addAgent(HttpServletRequest request, @RequestBody UserAgent agent) {
-        BaseResponse response;
-
+    public ApiResponseEntity addAgent(HttpServletRequest request, @RequestBody UserAgent agent) {
         if(super.getBasicAuth(request.getHeader("token"))) {
             uar.save(agent);
-            response = new BaseResponse("Added User Agent");
-            return ResponseFactory.createdResponse(response);
+            return ResponseFactory.createdResponse("Added User Agent");
         } else return ResponseFactory.unauthorizedResponse();
     }
 }

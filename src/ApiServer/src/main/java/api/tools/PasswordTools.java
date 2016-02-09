@@ -1,5 +1,6 @@
 package api.tools;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.io.UnsupportedEncodingException;
@@ -33,14 +34,16 @@ public class PasswordTools {
      * provided should have already been hashed. Use this to compare users
      * info in DB to entered user login data.
      *
-     * @param  passwordHash  User's hashed password
-     * @param  passwordSalt  Salt for the user's password
+     * @param  strToHash The string you wish to hash as sha-256
      * @return      SHA-256 hash of Password Salt + Password Hash
      */
     public static String sha256Hash(String strToHash) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        //TODO: make this not so garbage
+        StringBuffer result = new StringBuffer();
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(strToHash.getBytes("UTF-8"));
         byte[] digest = md.digest();
-        return Base64.encodeBase64String(digest);
+        for (byte byt : digest) result.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
+        return result.toString();
     }
 }

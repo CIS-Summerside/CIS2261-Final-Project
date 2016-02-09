@@ -24,21 +24,22 @@ public class FileController extends Authentication{
     @Autowired FileRepository fr;
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public ApiResponseEntity<BaseResponse> getFileDetails(@PathVariable("id") final Long id) {
+    public ApiResponseEntity getFileDetails(@PathVariable("id") final Long id) {
         File file = fr.findOne(id);
 
         if(file != null){
-            return ResponseFactory.foundResponse(new BaseResponse(file));
+            return ResponseFactory.foundResponse(file);
         } else {
-            return ResponseFactory.notFoundResponse(new BaseResponse("No user found by ID"));
+
+            return ResponseFactory.notFoundResponse("No user found by ID");
         }
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ApiResponseEntity<BaseResponse> addFileDetails(HttpServletRequest request, @RequestBody File file){
+    public ApiResponseEntity addFileDetails(HttpServletRequest request, @RequestBody File file){
         if(super.getBasicAuth(request.getHeader("token"))) {
             fr.save(file);
-            return ResponseFactory.createdResponse(new BaseResponse("Added File Details"));
+            return ResponseFactory.createdResponse("Added File Details");
         } else return ResponseFactory.unauthorizedResponse();
     }
 }

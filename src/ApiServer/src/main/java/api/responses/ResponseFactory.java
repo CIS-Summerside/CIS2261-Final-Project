@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
  */
 public class ResponseFactory {
 
-    public static <T> ApiResponseEntity<T> failResponce(T body){
+    public static <T> ApiResponseEntity<T> failResponse(T body){
         return new ApiResponseEntity<T>(body, HttpStatus.BAD_REQUEST);
     }
 
@@ -31,7 +31,7 @@ public class ResponseFactory {
         return new ApiResponseEntity<T>(body, HttpStatus.UNAUTHORIZED);
     }
 
-    public static <T> ApiResponseEntity<T> unauthorizedResponse(){
-        return new ApiResponseEntity<T>((T) new BaseResponse("Authentication Required"), HttpStatus.UNAUTHORIZED);
+    public static ApiResponseEntity<String> unauthorizedResponse(){
+        return new ApiResponseEntity<String>("Authentication Required", HttpStatus.UNAUTHORIZED);
     }
 }

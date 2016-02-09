@@ -1,5 +1,6 @@
 package api.services.authentication;
 
+import api.responses.ApiResponseEntity;
 import api.responses.BaseResponse;
 import api.models.data.Token;
 import api.models.data.User;
@@ -28,7 +29,7 @@ public class AuthenticationController {
      * REST endpoint for logging in a user and returning a token.
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Object loginUser(@RequestBody User login) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public ApiResponseEntity loginUser(@RequestBody User login) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = ur.findOneByUsername(login.getUsername());
         Token existingToken = tr.findOneByUserId(user.getId());
 
@@ -41,14 +42,14 @@ public class AuthenticationController {
                 Token token = new Token(user.getId());
                 tr.save(token);
 
-                return ResponseFactory.okResponse(new BaseResponse(token));
+                return ResponseFactory.okResponse(token);
             } else {
-                return ResponseFactory.authErrorResponse(new BaseResponse("Incorrect Password"));
+                return ResponseFactory.authErrorResponse("Incorrect Password");
             }
         } else if (existingToken != null){
-            return ResponseFactory.okResponse(new BaseResponse("Already logged in"));
+            return ResponseFactory.okResponse("Already logged in");
         } else {
-            return ResponseFactory.notFoundResponse(new BaseResponse("No user found by ID"));
+            return ResponseFactory.notFoundResponse("No user found by ID");
         }
     }
 
@@ -59,6 +60,6 @@ public class AuthenticationController {
     public Object loginUser(@RequestHeader("Token") String token) {
         Token existingToken = tr.findOneByToken(token);
         tr.delete(existingToken);
-        return ResponseFactory.okResponse(new BaseResponse("Logged out"));
+        return ResponseFactory.okResponse("Logged out");
     }
 }
