@@ -35,10 +35,15 @@ public class StreamController extends Authentication{
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     //public String uploadFile(HttpServletRequest request, @RequestBody File file){
-    public String uploadFile(HttpServletRequest request){
+    public String uploadFile(HttpServletRequest request/*, @RequestParam("File") MultipartFile uploadOne*/){
         
+        System.out.println("Before try");
         try {
-            boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+            //boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+            
+            System.out.println("After try");
+            
+            //System.out.println("Filesize: " + uploadOne.getSize());
             
             ServletFileUpload upload = new ServletFileUpload();
             
@@ -57,7 +62,9 @@ public class StreamController extends Authentication{
                     String fileName = item.getName();
                     
                     //Process the input stream
-                    File uploadedFile = new File("/"+item.getName());
+                    File uploadedFile = new File(item.getName());
+                    System.out.println(fileName);
+                    System.out.println(uploadedFile.getPath());
 
                     System.out.println(uploadedFile.getAbsolutePath());
 
