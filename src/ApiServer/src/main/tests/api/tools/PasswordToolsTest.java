@@ -25,8 +25,7 @@ public class PasswordToolsTest {
         //Assert the hash we generate is the same as our known good value
         assert knownGoodHash.equals(generatedHash);
 
-        //Assert that the known good hash and generated hash are the required length
-        assert knownGoodHash.length() == maxLength;
+        //Assert that the generated hash is the required length
         assert generatedHash.length() == maxLength;
         
     }

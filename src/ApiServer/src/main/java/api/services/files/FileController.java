@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.util.List;
 
 /**
  * Created by Connor on 2016-02-07.
@@ -29,10 +30,16 @@ public class FileController extends Authentication{
 
         if(file != null){
             return ResponseFactory.foundResponse(file);
-        } else {
+        } else return ResponseFactory.notFoundResponse("No file found by ID");
+    }
 
-            return ResponseFactory.notFoundResponse("No user found by ID");
-        }
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ApiResponseEntity getFileListing() {
+        List<File> files = fr.findAllActiveAndViewable();
+
+        if(files != null) {
+            return ResponseFactory.okResponse(files);
+        } else return ResponseFactory.notFoundResponse("No files found");
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
