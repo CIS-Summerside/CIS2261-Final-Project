@@ -26,11 +26,17 @@ namespace WindowsClient
 
             //Add items and reference the methods called when clicked to the ContextMenu.
             trayMenu.MenuItems.Add(new MenuItem("-"));
+            trayMenu.MenuItems.Add(new MenuItem("Serial Test", Serial));
             trayMenu.MenuItems.Add(new MenuItem("Login", Login));
             trayMenu.MenuItems.Add(new MenuItem("About", About));
             trayMenu.MenuItems.Add(new MenuItem(strings.Exit, Exit));
 
             return trayMenu;
+        }
+
+        private void Serial(object sender, EventArgs e)
+        {
+            Tools.ComputerTools.getSerialNumber();
         }
 
         private void About(object sender, EventArgs e)

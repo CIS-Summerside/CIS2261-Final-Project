@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
+using WindowsClient.Api;
 using WindowsClient.Api.Models;
 
 namespace WindowsClient.UI
@@ -22,7 +24,9 @@ namespace WindowsClient.UI
         {
             string passHash = Tools.HashingTools.sha256Hash(txt_Password.Text);
             User userDetails = new User(txt_Username.Text, passHash);
-            string response = ApiUtils.Communication.postData(Api.EndpointRefs.loginURL, userDetails);
+            string response = Communication.postData(Api.EndpointRefs.loginURL, userDetails);
+
+            Properties.Settings.Default.userToken = "";
             MessageBox.Show(response);
         }
 
