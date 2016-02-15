@@ -23,11 +23,13 @@ namespace WindowsClient.UI
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
+            bool login = false;
             string passHash = Tools.HashingTools.sha256Hash(txt_Password.Text);
             User user = new User(txt_Username.Text, passHash);
-            
-            bool login = Api.Endpoints.UserAuth.login(user);
 
+            if (Tools.UserTools.checkUsernameLength(user.username)) login = Api.Endpoints.UserAuth.login(user);
+            else MessageBox.Show("Username must be between 4 and 16 characters long");
+            
             if(login) this.Close();
         }
 

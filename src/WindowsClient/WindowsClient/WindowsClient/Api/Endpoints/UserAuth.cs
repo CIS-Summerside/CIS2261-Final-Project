@@ -33,7 +33,7 @@ namespace WindowsClient.Api.Endpoints
             }
             else
             {
-                MessageBox.Show((string)j["data"]);
+                MessageBox.Show((string)j["data"]["error"]);
             }
 
             return closeWin;
@@ -49,20 +49,30 @@ namespace WindowsClient.Api.Endpoints
             {
                 if (response.Item1 == 200)
                 {
-                    MessageBox.Show((string)j["data"]);
+                    MessageBox.Show((string) j["data"]);
                     closeWin = true;
                 }
                 else
                 {
-                    MessageBox.Show((string)j["data"]);
+                    MessageBox.Show((string) j["data"]);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show((string)j["data"]["message"]);
+                MessageBox.Show((string) j["data"]["error"]);
             }
 
             return closeWin;
+        }
+
+        public static void logout()
+        {
+            if (Properties.Settings.Default.userToken != string.Empty)
+            {
+                Properties.Settings.Default.userToken = string.Empty;
+                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Reload();
+            }
         }
     }
 }

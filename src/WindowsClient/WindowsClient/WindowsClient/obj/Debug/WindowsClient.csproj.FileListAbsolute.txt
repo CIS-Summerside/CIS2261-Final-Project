@@ -14,3 +14,4 @@ C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\Wi
 C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Debug\WindowsClient.UI.UploadDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Debug\WindowsClient.UI.SettingsDialog.resources

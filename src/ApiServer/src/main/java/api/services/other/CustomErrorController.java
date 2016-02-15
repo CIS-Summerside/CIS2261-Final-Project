@@ -19,6 +19,7 @@ import java.util.Map;
 /**
  * Created by Connor on 2016-01-27.
  */
+
 @RestController
 public class CustomErrorController implements ErrorController {
 

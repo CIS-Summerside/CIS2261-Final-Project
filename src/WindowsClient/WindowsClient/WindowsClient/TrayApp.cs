@@ -28,6 +28,7 @@ namespace WindowsClient
             mainTrayMenu.MenuItems.Add(new MenuItem("Upload File", Upload));
             mainTrayMenu.MenuItems.Add(new MenuItem("-"));
             mainTrayMenu.MenuItems.Add(new MenuItem("Login/Logout", Login));
+            mainTrayMenu.MenuItems.Add(new MenuItem("Settings", Settings));
             mainTrayMenu.MenuItems.Add(new MenuItem("About", About));
             mainTrayMenu.MenuItems.Add(new MenuItem(strings.Exit, Exit));
 
@@ -41,14 +42,22 @@ namespace WindowsClient
 
         private void Login(object sender, EventArgs e)
         {
-            UI.LoginDialog loginWin = new UI.LoginDialog();
-            loginWin.Show();
+            if (Properties.Settings.Default.userToken == string.Empty)
+            {
+                UI.LoginDialog loginWin = new UI.LoginDialog();
+                loginWin.Show();
+            }
+            else
+            {
+                Api.Endpoints.UserAuth.logout();
+                MessageBox.Show("Need to implement logout");
+            }
         }
 
-        private void Logout(object sender, EventArgs e)
+        private void Settings(object sender, EventArgs e)
         {
-            UI.LoginDialog loginWin = new UI.LoginDialog();
-            loginWin.Show();
+            UI.SettingsDialog settingsWin = new UI.SettingsDialog();
+            settingsWin.Show();
         }
 
         private void About(object sender, EventArgs e)

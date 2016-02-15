@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
@@ -20,7 +21,6 @@ namespace WindowsClient.Api
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(data);
-                    MessageBox.Show(json);
                     streamWriter.Write(json);
                 }
 
