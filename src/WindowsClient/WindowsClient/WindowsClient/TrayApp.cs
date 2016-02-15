@@ -22,33 +22,39 @@ namespace WindowsClient
 
         private ContextMenu CreateMenu()
         {
-            ContextMenu trayMenu = new ContextMenu();
+            ContextMenu mainTrayMenu = new ContextMenu();
 
             //Add items and reference the methods called when clicked to the ContextMenu.
-            trayMenu.MenuItems.Add(new MenuItem("-"));
-            trayMenu.MenuItems.Add(new MenuItem("Serial Test", Serial));
-            trayMenu.MenuItems.Add(new MenuItem("Login", Login));
-            trayMenu.MenuItems.Add(new MenuItem("About", About));
-            trayMenu.MenuItems.Add(new MenuItem(strings.Exit, Exit));
+            mainTrayMenu.MenuItems.Add(new MenuItem("Upload File", Upload));
+            mainTrayMenu.MenuItems.Add(new MenuItem("-"));
+            mainTrayMenu.MenuItems.Add(new MenuItem("Login/Logout", Login));
+            mainTrayMenu.MenuItems.Add(new MenuItem("About", About));
+            mainTrayMenu.MenuItems.Add(new MenuItem(strings.Exit, Exit));
 
-            return trayMenu;
+            return mainTrayMenu;
         }
 
-        private void Serial(object sender, EventArgs e)
+        private void Upload(object sender, EventArgs e)
         {
-            Tools.ComputerTools.getSerialNumber();
-        }
-
-        private void About(object sender, EventArgs e)
-        {
-            UI.AboutDialog aboutWin = new UI.AboutDialog();
-            aboutWin.Show();
+            
         }
 
         private void Login(object sender, EventArgs e)
         {
             UI.LoginDialog loginWin = new UI.LoginDialog();
             loginWin.Show();
+        }
+
+        private void Logout(object sender, EventArgs e)
+        {
+            UI.LoginDialog loginWin = new UI.LoginDialog();
+            loginWin.Show();
+        }
+
+        private void About(object sender, EventArgs e)
+        {
+            UI.AboutDialog aboutWin = new UI.AboutDialog();
+            aboutWin.Show();
         }
 
         private void Exit(object sender, EventArgs e)
@@ -60,7 +66,7 @@ namespace WindowsClient
         private void SetTitleAndIcon(bool uploading = false)
         {
             notifyIcon.Icon = Properties.Resources.Main;
-            notifyIcon.Text = "Hello Test";
+            notifyIcon.Text = "TFHS";
         }
 
     }

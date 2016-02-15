@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -48,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Endpoints\UserAuth.cs" />
     <Compile Include="Api\Models\Computer.cs" />
     <Compile Include="Api\Models\File.cs" />
     <Compile Include="Api\Models\User.cs" />
@@ -85,6 +90,12 @@
     <Compile Include="UI\RegistrationDialog.Designer.cs">
       <DependentUpon>RegistrationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UploadDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UploadDialog.Designer.cs">
+      <DependentUpon>UploadDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Api\EndpointRefs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EndpointRefs.Designer.cs</LastGenOutput>
@@ -112,6 +123,10 @@
     <EmbeddedResource Include="UI\RegistrationDialog.resx">
       <DependentUpon>RegistrationDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UploadDialog.resx">
+      <DependentUpon>UploadDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

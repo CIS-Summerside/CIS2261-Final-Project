@@ -10,6 +10,7 @@ using System.Web.Configuration;
 using System.Windows.Forms;
 using WindowsClient.Api;
 using WindowsClient.Api.Models;
+using Newtonsoft.Json.Linq;
 
 namespace WindowsClient.UI
 {
@@ -23,11 +24,11 @@ namespace WindowsClient.UI
         private void btn_Login_Click(object sender, EventArgs e)
         {
             string passHash = Tools.HashingTools.sha256Hash(txt_Password.Text);
-            User userDetails = new User(txt_Username.Text, passHash);
-            string response = Communication.postData(Api.EndpointRefs.loginURL, userDetails);
+            User user = new User(txt_Username.Text, passHash);
+            
+            bool login = Api.Endpoints.UserAuth.login(user);
 
-            Properties.Settings.Default.userToken = "";
-            MessageBox.Show(response);
+            if(login) this.Close();
         }
 
         private void btn_Register_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -7,9 +8,9 @@ namespace WindowsClient.Api
 {
     class Communication
     {
-        public static string postData(string url, object data)
+        public static Tuple<int, string> postData(string url, object data)
         {
-            string result;
+            Tuple<int, string> jsonResult;
             var httpWebRequest = (HttpWebRequest) WebRequest.Create(url);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
@@ -24,54 +25,55 @@ namespace WindowsClient.Api
                 }
 
                 var httpResponse = (HttpWebResponse) httpWebRequest.GetResponse();
+                
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    result = streamReader.ReadToEnd();
+                    jsonResult = Tuple.Create((int)httpResponse.StatusCode, streamReader.ReadToEnd());
                 }
             }
             catch (WebException wex)
             {
-                result = handleErrorRequests(wex);
+                jsonResult = handleErrorRequests(wex);
             }
-
-            return result;
+            
+            return jsonResult;
         }
 
-        public static string getData(string url)
+        public static Tuple<int, string> getData(string url)
         {
-            string result;
+            Tuple<int, string> jsonResult;
 
             try
             {
                 var httpWebRequest = (HttpWebRequest) WebRequest.Create(url);
                 var httpWebResponse = (HttpWebResponse) httpWebRequest.GetResponse();
-                using (var sr = new StreamReader(httpWebResponse.GetResponseStream()))
+                using (var streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
-                    result = sr.ReadToEnd();
+                    jsonResult = Tuple.Create((int)httpWebResponse.StatusCode, streamReader.ReadToEnd());
                 }
             }
             catch (WebException wex)
             {
-                result = handleErrorRequests(wex);
+                jsonResult = handleErrorRequests(wex);
             }
 
-            return result;
+            return jsonResult;
         }
 
-        public static string handleErrorRequests(WebException wex)
+        public static Tuple<int, string> handleErrorRequests(WebException wex)
         {
-            string errResponse = string.Empty;
+            Tuple<int, string> jsonResult = null;
             if (wex.Response != null)
             {
                 using (var errorResponse = (HttpWebResponse)wex.Response)
                 {
-                    using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                    using (var streamReader = new StreamReader(errorResponse.GetResponseStream()))
                     {
-                        errResponse = reader.ReadToEnd();
+                        jsonResult = Tuple.Create((int)errorResponse.StatusCode, streamReader.ReadToEnd());
                     }
                 }
             }
-            return errResponse;
+            return jsonResult;
         }
     }
 }

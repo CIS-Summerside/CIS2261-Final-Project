@@ -49,7 +49,7 @@ public class AuthenticationController {
         } else if (existingToken != null){
             return ResponseFactory.okResponse("Already logged in");
         } else {
-            return ResponseFactory.notFoundResponse("No user found by ID");
+            return ResponseFactory.notFoundResponse("User Not Found");
         }
     }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsClient.Api;
 using WindowsClient.Api.Models;
+using Newtonsoft.Json.Linq;
 
 namespace WindowsClient.UI
 {
@@ -22,9 +23,16 @@ namespace WindowsClient.UI
         private void btn_Submit_Click(object sender, EventArgs e)
         {
             string passHash = Tools.HashingTools.sha256Hash(txt_Password.Text);
-            User userDetails = new User(txt_Username.Text, passHash, txt_Email.Text);
-            string response = Communication.postData(Api.EndpointRefs.registerURL, userDetails);
-            MessageBox.Show(response);
+            User user = new User(txt_Username.Text, passHash, txt_Email.Text);
+            
+            bool reg = Api.Endpoints.UserAuth.register(user);
+
+            if(reg) this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
