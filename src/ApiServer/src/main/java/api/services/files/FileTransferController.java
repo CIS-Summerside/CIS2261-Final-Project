@@ -67,7 +67,7 @@ public class FileTransferController extends Authentication {
                         file.setFileStatus((byte) 1);
 
                         // Process the input stream
-                        OutputStream out = new FileOutputStream(file.getStoredName());
+                        OutputStream out = new FileOutputStream("Files/"+file.getStoredName());
                         IOUtils.copy(stream, out);
                         stream.close();
                         out.close();
@@ -96,7 +96,7 @@ public class FileTransferController extends Authentication {
                     response.setContentType("application/force-download");
                     response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getOriginalName() + "\"");
                     // get your file as InputStream
-                    java.io.File download = new java.io.File(file.getStoredName());
+                    java.io.File download = new java.io.File("Files/"+file.getStoredName());
                     InputStream is = new FileInputStream(download);
 
                     // copy it to response's OutputStream
