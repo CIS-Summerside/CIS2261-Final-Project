@@ -3,6 +3,7 @@ package api.models.data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 /**
  * Created by Connor on 2016-01-30.
@@ -35,34 +36,34 @@ public class File {
     private String downloadCode;
 
     @Basic(optional = false)
-    @Size(min = 1)
     @NotNull
     @Column(name = "file_size")
     private Long fileSize;
 
     @Basic(optional = false)
-    @Size(min = 1)
     @NotNull
     @Column(name = "file_status")
     private Byte fileStatus;
 
     @Basic(optional = false)
-    @Size(min = 1)
     @NotNull
     @Column(name = "file_access")
     private Byte fileAccess;
 
-    @Basic(optional = false)
-    @Size(min = 1)
-    @NotNull
-    @Column(name = "expiration_time")
-    private String expirationTime;
+    @Basic(optional = true)
+    @Temporal(TemporalType.TIME)
+    @Column(name = "expiration_time", insertable = false, updatable = false)
+    private Date expirationTime;
 
-    @Basic(optional = false)
-    @Size(min = 1)
-    @NotNull
-    @Column(name = "upload_date")
-    private String uploadDate;
+    @Basic(optional = true)
+    @Temporal(TemporalType.TIME)
+    @Column(name = "upload_time", insertable = false, updatable = false)
+    private Date uploadTime;
+
+    @Basic(optional = true)
+    @Temporal(TemporalType.DATE)
+    @Column(name = "upload_date", insertable = false, updatable = false)
+    private Date uploadDate;
 
     public File(){
 
@@ -117,17 +118,24 @@ public class File {
         this.fileAccess = fileAccess;
     }
 
-    public String getExpirationTime() {
+    public Date getExpirationTime() {
         return expirationTime;
     }
-    public void setExpirationTime(String expirationTime) {
+    public void setExpirationTime(Date expirationTime) {
         this.expirationTime = expirationTime;
     }
 
-    public String getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
-    public void setUploadDate(String uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
+    }
+
+    public Date getUploadTime() {
+        return uploadTime;
+    }
+    public void setUploadTime(Date uploadTime) {
+        this.uploadTime = uploadTime;
     }
 }

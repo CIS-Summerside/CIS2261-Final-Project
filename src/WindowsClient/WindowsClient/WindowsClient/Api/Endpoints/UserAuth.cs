@@ -47,9 +47,9 @@ namespace WindowsClient.Api.Endpoints
 
             try
             {
-                if (response.Item1 == 200)
+                if (response.Item1 == 201)
                 {
-                    MessageBox.Show((string) j["data"]);
+                    MessageBox.Show((string)j["data"]["username"] + " has been registered. Please login now.");
                     closeWin = true;
                 }
                 else

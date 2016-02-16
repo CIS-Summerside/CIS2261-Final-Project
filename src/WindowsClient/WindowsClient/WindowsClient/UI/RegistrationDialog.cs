@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsClient.Api;
 using WindowsClient.Api.Models;
-using Newtonsoft.Json.Linq;
 
 namespace WindowsClient.UI
 {
@@ -26,7 +17,14 @@ namespace WindowsClient.UI
             string passHash = Tools.HashingTools.sha256Hash(txt_Password.Text);
             User user = new User(txt_Username.Text, passHash, txt_Email.Text);
 
-            if (Tools.UserTools.checkUsernameLength(user.username)) reg = Api.Endpoints.UserAuth.register(user);
+            if (Tools.UserTools.checkUsernameLength(user.username))
+            {
+                if (Tools.UserTools.checkEmailLength(user.email))
+                {
+                    reg = Api.Endpoints.UserAuth.register(user);
+                }
+                else MessageBox.Show("Email must be between 7 and 30 characters long");
+            }
             else MessageBox.Show("Username must be between 4 and 16 characters long");
 
             if (reg) this.Close();

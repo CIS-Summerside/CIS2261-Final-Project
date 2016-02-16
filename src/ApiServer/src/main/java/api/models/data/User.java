@@ -39,7 +39,7 @@ public class User {
     private String passwordHash;
 
     @Basic(optional = false)
-    @Size(min = 7, max = 25)
+    @Size(min = 7, max = 30)
     @NotNull
     @Column(name = "email")
     private String email;

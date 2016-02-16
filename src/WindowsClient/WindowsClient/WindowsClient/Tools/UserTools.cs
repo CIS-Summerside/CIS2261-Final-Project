@@ -13,5 +13,10 @@ namespace WindowsClient.Tools
         {
             return username.Length >= 4 && username.Length < 16;
         }
+
+        public static bool checkEmailLength(string email)
+        {
+            return email.Length >= 7 && email.Length <= 30;
+        }
     }
 }
