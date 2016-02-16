@@ -92,15 +92,19 @@ public class FileTransferController extends Authentication {
         try {
             File file = fr.findOneByDownloadCode(code);
             if(file != null) {
-                response.setContentType("application/force-download");
-                response.setHeader("Content-Disposition", "attachment; filename=\""+ file.getOriginalName() +"\"");
-                // get your file as InputStream
-                java.io.File download = new java.io.File(file.getStoredName());
-                InputStream is = new FileInputStream(download);
+                if(file.getFileStatus() == 2) {
+                    response.setContentType("application/force-download");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getOriginalName() + "\"");
+                    // get your file as InputStream
+                    java.io.File download = new java.io.File(file.getStoredName());
+                    InputStream is = new FileInputStream(download);
 
-                // copy it to response's OutputStream
-                org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
-                response.flushBuffer();
+                    // copy it to response's OutputStream
+                    org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+                    response.flushBuffer();
+                } else {
+                    return ResponseFactory.authErrorResponse("File not available for download");
+                }
             } else {
                 return ResponseFactory.notFoundResponse("File not found");
             }
