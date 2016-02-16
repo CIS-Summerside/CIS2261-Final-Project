@@ -14,3 +14,4 @@ C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\Win
 C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Debug\WindowsClient.exe.config
 C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Debug\WindowsClient.exe
 C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Debug\WindowsClient.pdb
+C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Debug\WindowsClient.csprojResolveAssemblyReference.cache

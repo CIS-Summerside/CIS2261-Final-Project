@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,17 +41,14 @@ public class FileTransferController extends Authentication {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ApiResponseEntity uploadFile(HttpServletRequest request){
+        String token = request.getHeader("token");
         try {
-            if(super.getBasicAuth(request.getHeader("token"))) {
+            if(super.getBasicAuth(token)) {
                 boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-                if (!isMultipart) {
-                    // Inform user about invalid request
-                    return ResponseFactory.failResponse("Not a multipart request");
-                }
+                if (!isMultipart) return ResponseFactory.failResponse("Not a multipart request");
 
                 // Create a new file upload handler
                 ServletFileUpload upload = new ServletFileUpload();
-
                 // Parse the request
                 FileItemIterator iter = upload.getItemIterator(request);
 
@@ -83,41 +81,33 @@ public class FileTransferController extends Authentication {
         } catch (FileUploadException e) {
             return ResponseFactory.failResponse("Upload File Failed");
         } catch (IOException e) {
-            return ResponseFactory.failResponse("Server IO Error");
+            return ResponseFactory.failResponse("Server Failed To Process File");
         }
 
         return ResponseFactory.okResponse("Uploaded");
     }
-
-    @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public String downloadFile(HttpServletRequest request, @RequestBody File file){
-        //get the id from the request
-
-        //find the filepath that corresponds to the id
-
-        //serve the file
-        return "Success?";
-    }
     
-        @RequestMapping(value = "/download/{file_name}", method = RequestMethod.GET)
-public void getFile(
-    @PathVariable("file_name") String fileName, 
-    HttpServletResponse response) {
-    try {
-      // get your file as InputStream
-      java.io.File download = new java.io.File(fileName);
-      InputStream is = new FileInputStream(download);
-      // copy it to response's OutputStream
-      org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
-      response.flushBuffer();
-    } catch (IOException ex) {
-        System.out.println("Error writing file to output stream. Filename was '{}'");
-      throw new RuntimeException("IOError writing file to output stream");
-    }
+    @RequestMapping(value = "/download/{code}", method = RequestMethod.GET)
+    public ApiResponseEntity getFile(@PathVariable("code") String code, HttpServletResponse response) {
+        try {
+            File file = fr.findOneByDownloadCode(code);
+            if(file != null) {
+                response.setContentType("application/force-download");
+                response.setHeader("Content-Disposition", "attachment; filename=\""+ file.getOriginalName() +"\"");
+                // get your file as InputStream
+                java.io.File download = new java.io.File(file.getStoredName());
+                InputStream is = new FileInputStream(download);
 
-}
-
-    private static void processUploadRequest(){
-
+                // copy it to response's OutputStream
+                org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+                response.flushBuffer();
+            } else {
+                return ResponseFactory.notFoundResponse("File not found");
+            }
+        } catch (IOException ex) {
+            System.out.println("Error writing file to output stream. Filename was '{}'");
+            return ResponseFactory.failResponse("Error processing file for download");
+        }
+        return ResponseFactory.okResponse("File downloading");
     }
 }

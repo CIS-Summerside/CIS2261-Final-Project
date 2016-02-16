@@ -15,4 +15,6 @@ public interface FileRepository extends CrudRepository<File, Long> {
 
     @Query("select t from File t where t.fileStatus = 1 and t.fileAccess = 1")
     List<File> findAllActiveAndViewable();
+
+    File findOneByDownloadCode(String downloadCode);
 }

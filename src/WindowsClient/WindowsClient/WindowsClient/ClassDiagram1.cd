@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WindowsClient.Api.Communication">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Api\Communication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Api.EndpointRefs" Collapsed="true">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAEAEAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Api.Endpoints.UserAuth" Collapsed="true">
+    <Position X="4.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAACAAAAAQAAAAAAEAA=</HashCode>
+      <FileName>Api\Endpoints\UserAuth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.ApiData.Computer" Collapsed="true">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Api\Models\Computer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.ApiData.File">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Api\Models\File.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Api.Models.User" Collapsed="true">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Api\Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Program" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.TrayApp" Collapsed="true">
+    <Position X="8.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAQAAAAAgAAAAAAAEAoAAQAAAAACA=</HashCode>
+      <FileName>TrayApp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Properties.Resources" Collapsed="true">
+    <Position X="1.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAABAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Properties.Settings" Collapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAQAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Tools.ComputerTools" Collapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAA=</HashCode>
+      <FileName>Tools\ComputerTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Tools.HashingTools" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tools\HashingTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Tools.UserTools">
+    <Position X="7" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Tools\UserTools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.Translations.strings" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAIAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.UI.AboutDialog" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIACAAgAACAgCAUAAACAAAADAAAAEIAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\AboutDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.UI.LoginDialog" Collapsed="true">
+    <Position X="4.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAACEAJBAAAACAIABCAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>UI\LoginDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.UI.RegistrationDialog" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAABAAAACAIABCAAAIAAAEAGAAAIAAAAA=</HashCode>
+      <FileName>UI\RegistrationDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.UI.SettingsDialog" Collapsed="true">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAAABAAAACAAAACAIAAAAAAACAAAABAAAA=</HashCode>
+      <FileName>UI\SettingsDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsClient.UI.UploadDialog" Collapsed="true">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAA4AAAAECAAAAAAAAI=</HashCode>
+      <FileName>UI\UploadDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
