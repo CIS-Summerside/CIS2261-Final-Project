@@ -28,7 +28,7 @@ namespace WindowsClient.Api
                 
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
-                    jsonResult = Tuple.Create((int)httpResponse.StatusCode, streamReader.ReadToEnd());
+                    jsonResult = Tuple.Create((int) httpResponse.StatusCode, streamReader.ReadToEnd());
                 }
             }
             catch (WebException wex)

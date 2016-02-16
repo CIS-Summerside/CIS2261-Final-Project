@@ -26,7 +26,6 @@ namespace WindowsClient.UI
             bool login = false;
             string passHash = Tools.HashingTools.sha256Hash(txt_Password.Text);
             User user = new User(txt_Username.Text, passHash);
-
             if (Tools.UserTools.checkUsernameLength(user.username)) login = Api.Endpoints.UserAuth.login(user);
             else MessageBox.Show("Username must be between 4 and 16 characters long");
             

@@ -59,18 +59,20 @@ public class FileTransferController extends Authentication {
                     String fieldName = item.getFieldName();
 
                     if (!item.isFormField() && fieldName.equals("file")) {
+                        String randCode = api.tools.Base62.getBase64(file.getOriginalName());
                         file.setOriginalName(item.getName());
-                        file.setStoredName(item.getName());
-                        file.setDownloadCode("X1J5FS");
-                        file.setFileSize((long) 1000002);
+                        file.setStoredName(randCode + ".store");
+                        file.setDownloadCode(randCode);
                         file.setFileAccess((byte) 1);
                         file.setFileStatus((byte) 1);
 
                         // Process the input stream
-                        OutputStream out = new FileOutputStream(file.getOriginalName());
+                        OutputStream out = new FileOutputStream(file.getStoredName());
                         IOUtils.copy(stream, out);
                         stream.close();
                         out.close();
+
+                        file.setFileSize(new java.io.File(file.getStoredName()).length());
 
                         fr.save(file);
                     }
@@ -93,5 +95,9 @@ public class FileTransferController extends Authentication {
 
         //serve the file
         return "Success?";
+    }
+
+    private static void processUploadRequest(){
+
     }
 }

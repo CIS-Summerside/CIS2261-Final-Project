@@ -16,24 +16,22 @@ namespace WindowsClient.Api.Endpoints
             bool closeWin = false;
             var response = Communication.postData(Api.EndpointRefs.loginURL, user);
             JToken j = JToken.Parse(response.Item2);
-
-            if (response.Item1 == 200)
-            {
-                if (j["data"].HasValues)
-                {
-                    Properties.Settings.Default.userToken = (string)j["data"]["token"];
-                    Properties.Settings.Default.Save();
-                    Properties.Settings.Default.Reload();
-                    closeWin = true;
-                }
-                else
-                {
+            
+            switch(response.Item1){
+                case 200:
+                    closeWin = processToken(j);
+                    break;
+                case 302:
+                case 401:
+                case 404:
                     MessageBox.Show((string)j["data"]);
-                }
-            }
-            else
-            {
-                MessageBox.Show((string)j["data"]["error"]);
+                    break;
+                case 400:
+                    MessageBox.Show((string) j["data"]["error"]);
+                    break;
+                default:
+                    MessageBox.Show("Failed logging In");
+                    break;
             }
 
             return closeWin;
@@ -45,21 +43,21 @@ namespace WindowsClient.Api.Endpoints
             var response = Communication.postData(Api.EndpointRefs.registerURL, user);
             JToken j = JToken.Parse(response.Item2);
 
-            try
+            switch (response.Item1)
             {
-                if (response.Item1 == 201)
-                {
+                case 201:
                     MessageBox.Show((string)j["data"]["username"] + " has been registered. Please login now.");
                     closeWin = true;
-                }
-                else
-                {
-                    MessageBox.Show((string) j["data"]);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show((string) j["data"]["error"]);
+                    break;
+                case 302:
+                    MessageBox.Show("User by that name already exists.");
+                    break;
+                case 400:
+                    MessageBox.Show((string)j["data"]["error"]);
+                    break;
+                default:
+                    MessageBox.Show("Failed to register user.");
+                    break;
             }
 
             return closeWin;
@@ -72,6 +70,21 @@ namespace WindowsClient.Api.Endpoints
                 Properties.Settings.Default.userToken = string.Empty;
                 Properties.Settings.Default.Save();
                 Properties.Settings.Default.Reload();
+            }
+        }
+
+        public static bool processToken(JToken j)
+        {
+            if (j["data"].HasValues)
+            {
+                Properties.Settings.Default.userToken = (string) j["data"]["token"];
+                Properties.Settings.Default.Save();
+                Properties.Settings.Default.Reload();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -31,23 +31,24 @@ public class AuthenticationController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ApiResponseEntity loginUser(@RequestBody User login) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = ur.findOneByUsername(login.getUsername());
-        Token existingToken = tr.findOneByUserId(user.getId());
 
+        if (user != null){
+            Token existingToken = tr.findOneByUserId(user.getId());
+            if(existingToken == null){
+                String providedData = PasswordTools.sha256Hash(user.getPasswordSalt() + login.getPasswordHash());
+                String storedData = PasswordTools.sha256Hash(user.getPasswordSalt() + user.getPasswordHash());
 
-        if ((user != null) && (existingToken == null)){
-            String providedData = PasswordTools.sha256Hash(user.getPasswordSalt() + login.getPasswordHash());
-            String storedData = PasswordTools.sha256Hash(user.getPasswordSalt() + user.getPasswordHash());
+                if (providedData.equals(storedData)) {
+                    Token token = new Token(user.getId());
+                    tr.save(token);
 
-            if (providedData.equals(storedData)) {
-                Token token = new Token(user.getId());
-                tr.save(token);
-
-                return ResponseFactory.okResponse(token);
-            } else {
-                return ResponseFactory.authErrorResponse("Incorrect Password");
+                    return ResponseFactory.okResponse(token);
+                } else {
+                    return ResponseFactory.authErrorResponse("Incorrect Password");
+                }
+            } else{
+                return ResponseFactory.foundResponse("Already logged in");
             }
-        } else if (existingToken != null){
-            return ResponseFactory.okResponse("Already logged in");
         } else {
             return ResponseFactory.notFoundResponse("User Not Found");
         }
