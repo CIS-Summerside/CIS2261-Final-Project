@@ -8,6 +8,7 @@ import api.repositories.FileRepository;
 import api.responses.ApiResponseEntity;
 import api.responses.BaseResponse;
 import api.responses.ResponseFactory;
+import java.io.FileInputStream;
 
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -22,6 +23,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.FileItemIterator;
 import org.apache.tomcat.util.http.fileupload.FileItemStream;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -96,6 +98,24 @@ public class FileTransferController extends Authentication {
         //serve the file
         return "Success?";
     }
+    
+        @RequestMapping(value = "/download/{file_name}", method = RequestMethod.GET)
+public void getFile(
+    @PathVariable("file_name") String fileName, 
+    HttpServletResponse response) {
+    try {
+      // get your file as InputStream
+      java.io.File download = new java.io.File(fileName);
+      InputStream is = new FileInputStream(download);
+      // copy it to response's OutputStream
+      org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+      response.flushBuffer();
+    } catch (IOException ex) {
+        System.out.println("Error writing file to output stream. Filename was '{}'");
+      throw new RuntimeException("IOError writing file to output stream");
+    }
+
+}
 
     private static void processUploadRequest(){
 
