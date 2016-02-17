@@ -7,7 +7,7 @@ import java.util.Random;
  * Author: compa
  * Created: 2016-02-16
  */
-public class Base62 {
+public class UrlTools {
     public static String getBase64(String string) {
         String sampleAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();

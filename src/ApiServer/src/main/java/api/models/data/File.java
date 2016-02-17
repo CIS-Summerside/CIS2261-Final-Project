@@ -1,5 +1,8 @@
 package api.models.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -69,48 +72,61 @@ public class File {
 
     }
 
+    @JsonProperty
     public Long getFileId() {
         return fileId;
     }
+    @JsonIgnore
     public void setFileId(Long fileId) {
         this.fileId = fileId;
     }
 
+    @JsonProperty
     public String getOriginalName() {
         return originalName;
     }
+    @JsonIgnore
     public void setOriginalName(String originalName) {
         this.originalName = originalName;
     }
 
+    @JsonIgnore
     public String getStoredName() {
         return storedName;
     }
+    @JsonProperty
     public void setStoredName(String storedName) {
         this.storedName = storedName;
     }
 
+    @JsonProperty
     public String getDownloadCode() {
         return downloadCode;
     }
+    @JsonIgnore
     public void setDownloadCode(String downloadCode) {
         this.downloadCode = downloadCode;
     }
 
+    @JsonProperty
     public Long getFileSize() {
         return fileSize;
     }
+    @JsonProperty
     public void setFileSize(Long fileSize) {
         this.fileSize = fileSize;
     }
 
+    @JsonIgnore
     public Byte getFileStatus() {
         return fileStatus;
     }
+    @JsonProperty
     public void setFileStatus(Byte fileStatus) {
         this.fileStatus = fileStatus;
     }
 
+    @JsonIgnore
     public Byte getFileAccess() {
         return fileAccess;
     }
@@ -118,23 +134,29 @@ public class File {
         this.fileAccess = fileAccess;
     }
 
+    @JsonProperty
     public Date getExpirationTime() {
         return expirationTime;
     }
+    @JsonProperty
     public void setExpirationTime(Date expirationTime) {
         this.expirationTime = expirationTime;
     }
 
+    @JsonProperty
     public Date getUploadDate() {
         return uploadDate;
     }
+    @JsonIgnore
     public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 
+    @JsonProperty
     public Date getUploadTime() {
         return uploadTime;
     }
+    @JsonIgnore
     public void setUploadTime(Date uploadTime) {
         this.uploadTime = uploadTime;
     }

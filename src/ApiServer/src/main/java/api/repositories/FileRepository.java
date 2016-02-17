@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface FileRepository extends CrudRepository<File, Long> {
 
-    @Query("select t from File t where t.fileStatus = 1 and t.fileAccess = 1")
+    @Query("select t from File t where t.fileStatus = 0 and t.fileAccess = 0")
     List<File> findAllActiveAndViewable();
 
     File findOneByDownloadCode(String downloadCode);

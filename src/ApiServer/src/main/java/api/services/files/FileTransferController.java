@@ -2,34 +2,28 @@ package api.services.files;
 
 
 import api.models.authentication.Authentication;
-import api.models.data.Computer;
 import api.models.data.File;
 import api.repositories.FileRepository;
 import api.responses.ApiResponseEntity;
-import api.responses.BaseResponse;
 import api.responses.ResponseFactory;
 import java.io.FileInputStream;
 
 
+import api.tools.UrlTools;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.FileItemIterator;
 import org.apache.tomcat.util.http.fileupload.FileItemStream;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import org.apache.tomcat.util.http.fileupload.util.Streams;
 
 /**
  * Created by Jordon
@@ -59,12 +53,12 @@ public class FileTransferController extends Authentication {
                     String fieldName = item.getFieldName();
 
                     if (!item.isFormField() && fieldName.equals("file")) {
-                        String randCode = api.tools.Base62.getBase64(file.getOriginalName());
+                        String randCode = UrlTools.getBase64(file.getOriginalName());
                         file.setOriginalName(item.getName());
                         file.setStoredName(randCode + ".store");
                         file.setDownloadCode(randCode);
-                        file.setFileAccess((byte) 1);
-                        file.setFileStatus((byte) 1);
+                        file.setFileAccess((byte) 0);
+                        file.setFileStatus((byte) 0);
 
                         // Process the input stream
                         OutputStream out = new FileOutputStream("Files/"+file.getStoredName());
@@ -92,7 +86,7 @@ public class FileTransferController extends Authentication {
         try {
             File file = fr.findOneByDownloadCode(code);
             if(file != null) {
-                if(file.getFileStatus() == 2) {
+                if((file.getFileStatus() == 0) && (file.getFileAccess() == 0)) {
                     response.setContentType("application/force-download");
                     response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getOriginalName() + "\"");
                     // get your file as InputStream

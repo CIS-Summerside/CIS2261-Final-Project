@@ -5,7 +5,7 @@ package api.responses;
  */
 public class BaseResponse {
     private String version = "0.1";
-    private String terms = "http://www.google.com/terms";
+    private String terms = "http://localhost:8080/api/terms";
     private Object data;
 
     public BaseResponse(Object data){

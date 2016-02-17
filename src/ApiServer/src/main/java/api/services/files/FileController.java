@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class FileController extends Authentication{
     public ApiResponseEntity getFileListing() {
         List<File> files = fr.findAllActiveAndViewable();
 
-        if(files != null) {
+        if((files != null) && !files.isEmpty()) {
             return ResponseFactory.okResponse(files);
         } else return ResponseFactory.notFoundResponse("No files found");
     }
