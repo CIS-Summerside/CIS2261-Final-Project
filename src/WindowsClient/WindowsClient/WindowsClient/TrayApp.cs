@@ -37,7 +37,8 @@ namespace WindowsClient
 
         private void Upload(object sender, EventArgs e)
         {
-            
+            UI.UploadDialog uploadWin = new UI.UploadDialog();
+            uploadWin.Show();
         }
 
         private void Login(object sender, EventArgs e)

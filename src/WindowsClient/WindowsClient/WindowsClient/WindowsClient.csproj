@@ -66,6 +66,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\ComputerTools.cs" />
+    <Compile Include="Tools\FileTools.cs" />
     <Compile Include="Tools\HashingTools.cs" />
     <Compile Include="Tools\UserTools.cs" />
     <Compile Include="Translations\strings.Designer.cs">
