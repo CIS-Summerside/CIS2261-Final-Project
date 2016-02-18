@@ -16,7 +16,11 @@ namespace WindowsClient.UI
         {
             InitializeComponent();
             string token = Properties.Settings.Default.userToken;
+            string computer = Properties.Settings.Default.computerIdentifier;
+            string computerHash = Properties.Settings.Default.computerIdHashed;
             txt_Token.Text = token;
+            txt_Computer.Text = computer;
+            txt_CmpHash.Text = computerHash;
         }
 
         private void btn_Ok_Click(object sender, EventArgs e)

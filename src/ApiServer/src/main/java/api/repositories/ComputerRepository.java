@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ComputerRepository extends CrudRepository<Computer, Long> {
-
+    Computer findOneByIdentifierHash(String identifierHash);
 }

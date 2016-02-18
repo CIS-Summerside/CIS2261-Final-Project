@@ -2,8 +2,14 @@ package api.services.files;
 
 
 import api.models.authentication.Authentication;
+import api.models.data.Computer;
 import api.models.data.File;
+import api.models.data.Upload;
+import api.models.data.User;
+import api.repositories.ComputerRepository;
 import api.repositories.FileRepository;
+import api.repositories.UploadRepository;
+import api.repositories.UserRepository;
 import api.responses.ApiResponseEntity;
 import api.responses.ResponseFactory;
 import java.io.FileInputStream;
@@ -32,12 +38,20 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 @RequestMapping("/api/files")
 public class FileTransferController extends Authentication {
     @Autowired FileRepository fr;
+    @Autowired ComputerRepository cr;
+    @Autowired UploadRepository upr;
+    @Autowired UserRepository ur;
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ApiResponseEntity uploadFile(HttpServletRequest request){
         String token = request.getHeader("token");
+        String computerHash = request.getHeader("cpt");
+
         try {
             if(super.getBasicAuth(token)) {
+                User user = ur.findOneByUserId(super.getUserId(token));
+                Computer computer = cr.findOneByIdentifierHash(computerHash);
+
                 boolean isMultipart = ServletFileUpload.isMultipartContent(request);
                 if (!isMultipart) return ResponseFactory.failResponse("Not a multipart request");
 
@@ -69,6 +83,14 @@ public class FileTransferController extends Authentication {
                         file.setFileSize(new java.io.File(file.getStoredName()).length());
 
                         fr.save(file);
+
+                        if(computer != null && user != null){
+                            Upload uploadDetails = new Upload();
+                            uploadDetails.setFileId(file);
+                            uploadDetails.setComputerId(computer);
+                            uploadDetails.setUserId(user);
+                            upr.save(uploadDetails);
+                        }
                     }
                 }
             } else return ResponseFactory.unauthorizedResponse();

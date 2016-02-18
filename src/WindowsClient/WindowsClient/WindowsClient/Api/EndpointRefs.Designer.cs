@@ -61,6 +61,15 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://localhost:8080/api/metrics/computer/add.
+        /// </summary>
+        internal static string computerUrl {
+            get {
+                return ResourceManager.GetString("computerUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://localhost:8080/api/user/login.
         /// </summary>
         internal static string loginURL {

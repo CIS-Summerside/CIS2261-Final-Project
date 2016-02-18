@@ -23,16 +23,17 @@ public class Token {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Basic(optional = false)
     @NotNull
     @Column(name = "token")
     private String token = UUID.randomUUID().toString();
 
-    public Token(Long id){
-        this.userId = id;
+    public Token(User user){
+        this.user = user;
     }
 
     public Token(){
@@ -50,7 +51,12 @@ public class Token {
     }
 
     @JsonIgnore
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @JsonIgnore
+    public User getUser() {
+        return user;
     }
 }

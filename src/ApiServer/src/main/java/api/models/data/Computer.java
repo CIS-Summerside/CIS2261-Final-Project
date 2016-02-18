@@ -21,22 +21,15 @@ public class Computer {
     private Long computerId;
 
     @Basic(optional = false)
-    @Size(max = 17)
     @NotNull
-    @Column(name = "mac_address")
-    private String macAddress;
+    @Column(name = "identifier_raw")
+    private String identifierRaw;
 
     @Basic(optional = false)
-    @Size(min = 1, max = 150)
     @NotNull
-    @Column(name = "bios_serial")
-    private String biosSerial = "";
-
-    @Basic(optional = false)
-    @Size(min = 1, max = 150)
-    @NotNull
-    @Column(name = "operating_system")
-    private String operatingSystem;
+    @Size(min = 64, max = 64)
+    @Column(name = "identifier_Hash")
+    private String identifierHash;
 
     @Basic(optional = true)
     @Temporal(TemporalType.TIME)
@@ -56,43 +49,42 @@ public class Computer {
     public Long getComputerId(){
         return this.computerId;
     }
-    @JsonProperty
+    @JsonIgnore
     public void setComputerId(Long computerId){
         this.computerId = computerId;
     }
 
     @JsonIgnore
-    public String getMacAddress(){
-        return this.macAddress;
+    public String getIdentifierRaw() {
+        return identifierRaw;
     }
     @JsonProperty
-    public void setMacAddress(String macAddress){
-        this.macAddress = macAddress;
+    public void setIdentifierRaw(String identifierRaw) {
+        this.identifierRaw = identifierRaw;
     }
 
     @JsonIgnore
-    public String getBiosSerial(){
-        return this.biosSerial;
+    public String getIdentifierHash() {
+        return identifierHash;
     }
-    @JsonProperty
-    public void setBiosSerial(String biosSerial){
-        this.biosSerial = biosSerial;
+    @JsonIgnore
+    public void setIdentifierHash(String identifierHash) {
+        this.identifierHash = identifierHash;
     }
 
     @JsonIgnore
-    public String getOperatingSystem(){
-        return this.operatingSystem;
+    public void setLogTime(Date logTime) {
+        this.logTime = logTime;
     }
-    @JsonProperty
-    public void setOperatingSystem(String operatingSystem){
-        this.operatingSystem = operatingSystem;
+    @JsonIgnore
+    public void setLogDate(Date logDate) {
+        this.logDate = logDate;
     }
 
     @JsonIgnore
     public Date getLogDate() {
         return logDate;
     }
-
     @JsonIgnore
     public Date getLogTime() {
         return logTime;

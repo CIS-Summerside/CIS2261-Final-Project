@@ -1,7 +1,6 @@
 package api.services.authentication;
 
 import api.responses.ApiResponseEntity;
-import api.responses.BaseResponse;
 import api.models.data.Token;
 import api.models.data.User;
 import api.repositories.TokenRepository;
@@ -33,13 +32,13 @@ public class AuthenticationController {
         User user = ur.findOneByUsername(login.getUsername());
 
         if (user != null){
-            Token existingToken = tr.findOneByUserId(user.getId());
+            Token existingToken = tr.findOneByUser(user);
             if(existingToken == null){
                 String providedData = PasswordTools.sha256Hash(user.getPasswordSalt() + login.getPasswordHash());
                 String storedData = PasswordTools.sha256Hash(user.getPasswordSalt() + user.getPasswordHash());
 
                 if (providedData.equals(storedData)) {
-                    Token token = new Token(user.getId());
+                    Token token = new Token(user);
                     tr.save(token);
 
                     return ResponseFactory.okResponse(token);

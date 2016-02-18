@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Endpoints\ComputerAdder.cs" />
     <Compile Include="Api\Endpoints\UserAuth.cs" />
     <Compile Include="Api\Models\Computer.cs" />
     <Compile Include="Api\Models\File.cs" />

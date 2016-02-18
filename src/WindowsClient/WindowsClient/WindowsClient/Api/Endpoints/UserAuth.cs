@@ -20,6 +20,7 @@ namespace WindowsClient.Api.Endpoints
             switch(response.Item1){
                 case 200:
                     closeWin = processToken(j);
+                    ComputerAdder.addComputer();
                     break;
                 case 302:
                 case 401:

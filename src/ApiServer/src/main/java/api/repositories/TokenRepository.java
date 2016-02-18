@@ -2,6 +2,7 @@ package api.repositories;
 
 import api.models.data.Report;
 import api.models.data.Token;
+import api.models.data.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TokenRepository extends CrudRepository<Token, Long> {
 
-    Token findOneByUserId(Long id);
+    Token findOneByUser(User user);
     Token findOneByToken(String token);
 }

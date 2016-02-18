@@ -34,5 +34,29 @@ namespace WindowsClient.Properties {
                 this["userToken"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string computerIdentifier {
+            get {
+                return ((string)(this["computerIdentifier"]));
+            }
+            set {
+                this["computerIdentifier"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string computerIdHashed {
+            get {
+                return ((string)(this["computerIdHashed"]));
+            }
+            set {
+                this["computerIdHashed"] = value;
+            }
+        }
     }
 }

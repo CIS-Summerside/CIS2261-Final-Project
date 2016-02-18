@@ -1,6 +1,5 @@
 package api.services.users;
 
-import api.responses.BaseResponse;
 import api.models.data.User;
 import api.repositories.UserRepository;
 import api.responses.ApiResponseEntity;

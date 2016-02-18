@@ -8,5 +8,16 @@ namespace WindowsClient.ApiData
 {
     class Computer
     {
+        public string identifierRaw;
+
+        public Computer(string identifierRaw)
+        {
+            this.identifierRaw = identifierRaw;
+        }
+
+        public Computer()
+        {
+            
+        }
     }
 }
