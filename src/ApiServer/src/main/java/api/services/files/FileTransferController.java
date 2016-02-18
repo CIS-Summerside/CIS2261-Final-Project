@@ -86,7 +86,7 @@ public class FileTransferController extends Authentication {
 
                         fr.save(file);
 
-                        if(computer != null && user != null){
+                       if(computer != null && user != null){
                             Upload uploadDetails = new Upload();
                             uploadDetails.setFileId(file);
                             uploadDetails.setComputerId(computer);
