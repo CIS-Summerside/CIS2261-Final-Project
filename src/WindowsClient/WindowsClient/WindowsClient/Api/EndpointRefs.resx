@@ -126,4 +126,7 @@
   <data name="registerURL" xml:space="preserve">
     <value>http://localhost:8080/api/user/add</value>
   </data>
+  <data name="uploadURL" xml:space="preserve">
+    <value>http://localhost:8080/api/files/upload</value>
+  </data>
 </root>

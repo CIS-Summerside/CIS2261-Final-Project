@@ -51,7 +51,7 @@ namespace WindowsClient.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FileTools.Upload("http://localhost:8080/api/files/upload", name, file, buffer);
+            FileTools.Upload(Api.EndpointRefs.uploadURL, name, file, buffer);
         }
     }
 }

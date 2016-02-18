@@ -86,5 +86,14 @@ namespace WindowsClient.Api {
                 return ResourceManager.GetString("registerURL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:8080/api/files/upload.
+        /// </summary>
+        internal static string uploadURL {
+            get {
+                return ResourceManager.GetString("uploadURL", resourceCulture);
+            }
+        }
     }
 }
