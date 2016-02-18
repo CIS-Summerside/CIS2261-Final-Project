@@ -82,7 +82,7 @@ public class FileTransferController extends Authentication {
                         stream.close();
                         out.close();
 
-                        file.setFileSize(new java.io.File(file.getStoredName()).length());
+                        file.setFileSize(new java.io.File(storeLoc + file.getStoredName()).length());
 
                         fr.save(file);
 
@@ -93,6 +93,7 @@ public class FileTransferController extends Authentication {
                             uploadDetails.setUserId(user);
                             upr.save(uploadDetails);
                         }
+                        return ResponseFactory.okResponse(file);
                     }
                 }
             } else return ResponseFactory.unauthorizedResponse();
@@ -101,8 +102,7 @@ public class FileTransferController extends Authentication {
         } catch (IOException e) {
             return ResponseFactory.failResponse("Server Failed To Process File");
         }
-
-        return ResponseFactory.okResponse("Uploaded");
+        return ResponseFactory.failResponse("Something went wrong");
     }
     
     @RequestMapping(value = "/download/{code}", method = RequestMethod.GET)

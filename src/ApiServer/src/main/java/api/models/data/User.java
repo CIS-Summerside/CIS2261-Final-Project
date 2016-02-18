@@ -46,8 +46,8 @@ public class User {
 
     @Basic(optional = true)
     @Temporal(TemporalType.DATE)
-    @Column(name = "registration_date", insertable = false, updatable = false)
-    private Date regDate;
+    @Column(name = "registration_date", insertable = true, updatable = false)
+    private Date regDate = new Date(System.currentTimeMillis());;
 
 
     public User(){

@@ -55,18 +55,18 @@ public class File {
 
     @Basic(optional = true)
     @Temporal(TemporalType.TIME)
-    @Column(name = "expiration_time", insertable = false, updatable = false)
-    private Date expirationTime;
+    @Column(name = "expiration_time", insertable = true, updatable = false)
+    private Date expirationTime = new Date(System.currentTimeMillis()+(5*60*1000));
 
     @Basic(optional = true)
     @Temporal(TemporalType.TIME)
-    @Column(name = "upload_time", insertable = false, updatable = false)
-    private Date uploadTime;
+    @Column(name = "upload_time", insertable = true, updatable = false)
+    private Date uploadTime = new Date(System.currentTimeMillis());
 
     @Basic(optional = true)
     @Temporal(TemporalType.DATE)
-    @Column(name = "upload_date", insertable = false, updatable = false)
-    private Date uploadDate;
+    @Column(name = "upload_date", insertable = true, updatable = false)
+    private Date uploadDate = new Date(System.currentTimeMillis());
 
     public File(){
 
