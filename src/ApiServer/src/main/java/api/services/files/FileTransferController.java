@@ -81,13 +81,25 @@ public class FileTransferController extends Authentication {
                     String fieldName = item.getFieldName();
 
                     if (item.isFormField() && fieldName.equals("privacy")) {
-                        if(isNumber(Streams.asString(stream))) {
-                            byte privacy = Byte.parseByte(Streams.asString(stream));
+                        String content = Streams.asString(stream);
+                        System.out.println("File Access: " + content);
+                        if(isNumber(content)) {
+                            byte privacy = Byte.parseByte(content);
 
-                            if ((privacy >= 0) && (privacy <= 1)) file.setFileAccess(privacy);
-                            else file.setFileAccess((byte) 0);
+                            if ((privacy >= 0) && (privacy <= 1)) 
+                                file.setFileAccess(privacy);
+                            else 
+                                file.setFileAccess((byte) 0);
                         } else file.setFileAccess((byte) 0);
-                    } else if (!item.isFormField() && fieldName.equals("file")) {
+                    }else if (item.isFormField() && fieldName.equals("duration")) {
+                        String content = Streams.asString(stream);
+                        System.out.println("Duration: " + content);
+                        if(isNumber(content)) {
+                            int duration = Integer.parseInt(content);
+                            file.setExpirationTime(new Date(System.currentTimeMillis()+(duration*60*1000)));
+                        } else 
+                            file.setExpirationTime(new Date(System.currentTimeMillis()+(5*60*1000)));
+                    }else if (!item.isFormField() && fieldName.equals("file")) {
                         String randCode = UrlTools.getBase64(file.getOriginalName());
                         file.setOriginalName(item.getName());
                         file.setStoredName(randCode + ".store");
@@ -118,6 +130,7 @@ public class FileTransferController extends Authentication {
         } catch (FileUploadException e) {
             return ResponseFactory.failResponse("Upload File Failed");
         } catch (IOException e) {
+            //System.out.println(e.getMessage());
             return ResponseFactory.failResponse("Server Failed To Process File");
         }
     }

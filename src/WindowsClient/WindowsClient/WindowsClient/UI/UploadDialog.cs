@@ -22,6 +22,7 @@ namespace WindowsClient.UI
         public UploadDialog()
         {
             InitializeComponent();
+            radioButton1.Checked = true;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -51,7 +52,19 @@ namespace WindowsClient.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FileTools.Upload(Api.EndpointRefs.uploadURL, name, file, buffer);
+            String privacy = "0";
+            String duration = "5";
+            if(radioButton1.Checked)
+            {
+                privacy = "0";
+            }
+            else if(radioButton2.Checked)
+            {
+                privacy = "1";
+            }
+
+            duration = numericUpDown1.Value.ToString();
+            FileTools.Upload(Api.EndpointRefs.uploadURL, privacy, duration, name, file, buffer);
         }
     }
 }
