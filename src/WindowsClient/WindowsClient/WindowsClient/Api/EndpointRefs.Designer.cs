@@ -70,11 +70,29 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://localhost:8080/api/files/download/.
+        /// </summary>
+        internal static string downloadURL {
+            get {
+                return ResourceManager.GetString("downloadURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://localhost:8080/api/user/login.
         /// </summary>
         internal static string loginURL {
             get {
                 return ResourceManager.GetString("loginURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:8080/api/user/logout.
+        /// </summary>
+        internal static string logoutURL {
+            get {
+                return ResourceManager.GetString("logoutURL", resourceCulture);
             }
         }
         

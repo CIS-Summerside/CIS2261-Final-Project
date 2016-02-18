@@ -51,7 +51,7 @@ namespace WindowsClient
             else
             {
                 Api.Endpoints.UserAuth.logout();
-                MessageBox.Show("Need to implement logout");
+                //MessageBox.Show("Need to implement logout");
             }
         }
 

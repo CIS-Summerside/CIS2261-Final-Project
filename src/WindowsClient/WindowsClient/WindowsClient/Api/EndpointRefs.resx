@@ -120,8 +120,14 @@
   <data name="computerUrl" xml:space="preserve">
     <value>http://localhost:8080/api/metrics/computer/add</value>
   </data>
+  <data name="downloadURL" xml:space="preserve">
+    <value>http://localhost:8080/api/files/download/</value>
+  </data>
   <data name="loginURL" xml:space="preserve">
     <value>http://localhost:8080/api/user/login</value>
+  </data>
+  <data name="logoutURL" xml:space="preserve">
+    <value>http://localhost:8080/api/user/logout</value>
   </data>
   <data name="registerURL" xml:space="preserve">
     <value>http://localhost:8080/api/user/add</value>

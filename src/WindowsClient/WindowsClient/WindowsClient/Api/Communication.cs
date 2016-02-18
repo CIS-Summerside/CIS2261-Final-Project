@@ -21,7 +21,7 @@ namespace WindowsClient.Api
                 using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
                     string json = new JavaScriptSerializer().Serialize(data);
-                    MessageBox.Show(json);
+                    //MessageBox.Show(json);
                     streamWriter.Write(json);
                 }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsClient.Api.Models;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace WindowsClient.Api.Endpoints
 {
@@ -68,9 +69,22 @@ namespace WindowsClient.Api.Endpoints
         {
             if (Properties.Settings.Default.userToken != string.Empty)
             {
-                Properties.Settings.Default.userToken = string.Empty;
-                Properties.Settings.Default.Save();
-                Properties.Settings.Default.Reload();
+                using (var client = new HttpClient())
+                using (var formData = new MultipartFormDataContent())
+                {
+                    client.DefaultRequestHeaders.Add("token", Properties.Settings.Default.userToken);
+                    var response = client.PostAsync(Api.EndpointRefs.logoutURL, formData).Result;
+
+                    // equivalent of pressing the submit button on the form
+                    /*if (!response.IsSuccessStatusCode)
+                    {
+                        return null;
+                    }
+                    return response.Content.ReadAsStreamAsync().Result;*/
+                    Properties.Settings.Default.userToken = string.Empty;
+                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.Reload();
+                }
             }
         }
 

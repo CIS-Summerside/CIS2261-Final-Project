@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsClient.Tools
 {
@@ -48,7 +50,23 @@ namespace WindowsClient.Tools
 
                 // equivalent to (action="{url}" method="post")
                 var response = client.PostAsync(url, formData).Result;
+                JToken j = JToken.Parse(response.Content.ReadAsStringAsync().Result);
 
+                switch((int)response.StatusCode)
+                {
+                    case 200:
+                        string downloadLink = Api.EndpointRefs.downloadURL + j["data"]["downloadCode"];
+                        Clipboard.SetText(downloadLink);
+                        MessageBox.Show("Upload successful. The following link has been copied to your clipboard." + 
+                            "\n" + downloadLink);
+                        break;
+                    case 401:
+                        MessageBox.Show("You must log in to upload.");
+                        break;
+                    case 400:
+                        MessageBox.Show("Everything is broken.");
+                        break;
+                }
                 // equivalent of pressing the submit button on the form
                 if (!response.IsSuccessStatusCode)
                 {
