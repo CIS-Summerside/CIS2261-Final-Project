@@ -25,7 +25,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.fileupload.util.Streams;
+import org.apache.commons.lang.NumberUtils;
+import static org.apache.commons.lang.NumberUtils.isNumber;
 import org.apache.tomcat.util.http.fileupload.FileItemIterator;
 import org.apache.tomcat.util.http.fileupload.FileItemStream;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -67,13 +71,43 @@ public class FileTransferController extends Authentication {
                     FileItemStream item = iter.next();
                     InputStream stream = item.openStream();
                     String fieldName = item.getFieldName();
-
+                    
+                    if (item.isFormField() && fieldName.equals("privacy"))
+                    {
+                        
+                        //file.setFileAccess(item.getString());
+                        int privacy = Integer.parseInt(Streams.asString(stream));
+                        System.out.println(fieldName + ": " + privacy);
+                            
+                            if(!(privacy >= 0 || privacy <= 1))
+                            {
+                                file.setFileAccess((byte)0);
+                            }
+                            else
+                            {
+                                file.setFileAccess((byte)privacy);
+                            }
+                        }
+                    if (item.isFormField() && fieldName.equals("duration"))
+                    {
+                        int duration = Integer.parseInt(Streams.asString(stream));
+                            
+                            if(!(duration >= 0 || duration <= 60))
+                            {
+                                file.setExpirationTime(new Date(System.currentTimeMillis()+(duration*60*1000)));
+                            }
+                            else
+                            {
+                                file.setExpirationTime(new Date(System.currentTimeMillis()+(5*60*1000)));
+                            }
+                            System.out.println(fieldName + ": " + duration);
+                    }
                     if (!item.isFormField() && fieldName.equals("file")) {
                         String randCode = UrlTools.getBase64(file.getOriginalName());
                         file.setOriginalName(item.getName());
                         file.setStoredName(randCode + ".store");
                         file.setDownloadCode(randCode);
-                        file.setFileAccess((byte) 0);
+                        //file.setFileAccess((byte) 0);
                         file.setFileStatus((byte) 0);
 
                         // Process the input stream
