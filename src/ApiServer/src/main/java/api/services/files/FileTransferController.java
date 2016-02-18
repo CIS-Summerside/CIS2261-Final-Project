@@ -42,6 +42,8 @@ public class FileTransferController extends Authentication {
     @Autowired UploadRepository upr;
     @Autowired UserRepository ur;
 
+    private static final String storeLoc = "Files/";
+
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ApiResponseEntity uploadFile(HttpServletRequest request){
         String token = request.getHeader("token");
@@ -75,7 +77,7 @@ public class FileTransferController extends Authentication {
                         file.setFileStatus((byte) 0);
 
                         // Process the input stream
-                        OutputStream out = new FileOutputStream("Files/"+file.getStoredName());
+                        OutputStream out = new FileOutputStream(storeLoc + file.getStoredName());
                         IOUtils.copy(stream, out);
                         stream.close();
                         out.close();
@@ -112,7 +114,7 @@ public class FileTransferController extends Authentication {
                     response.setContentType("application/force-download");
                     response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getOriginalName() + "\"");
                     // get your file as InputStream
-                    java.io.File download = new java.io.File("Files/"+file.getStoredName());
+                    java.io.File download = new java.io.File(storeLoc + file.getStoredName());
                     InputStream is = new FileInputStream(download);
 
                     // copy it to response's OutputStream
