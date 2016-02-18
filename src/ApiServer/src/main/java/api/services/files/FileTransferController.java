@@ -12,6 +12,7 @@ import api.repositories.UploadRepository;
 import api.repositories.UserRepository;
 import api.responses.ApiResponseEntity;
 import api.responses.ResponseFactory;
+
 import java.io.FileInputStream;
 
 
@@ -27,9 +28,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.lang.NumberUtils;
+
 import static org.apache.commons.lang.NumberUtils.isNumber;
+
 import org.apache.tomcat.util.http.fileupload.FileItemIterator;
 import org.apache.tomcat.util.http.fileupload.FileItemStream;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -41,20 +45,25 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 @RestController
 @RequestMapping("/api/files")
 public class FileTransferController extends Authentication {
-    @Autowired FileRepository fr;
-    @Autowired ComputerRepository cr;
-    @Autowired UploadRepository upr;
-    @Autowired UserRepository ur;
+    @Autowired
+    FileRepository fr;
+    @Autowired
+    ComputerRepository cr;
+    @Autowired
+    UploadRepository upr;
+    @Autowired
+    UserRepository ur;
 
     private static final String storeLoc = "Files/";
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public ApiResponseEntity uploadFile(HttpServletRequest request){
+    public ApiResponseEntity uploadFile(HttpServletRequest request) {
         String token = request.getHeader("token");
         String computerHash = request.getHeader("cpt");
 
         try {
-            if(super.getBasicAuth(token)) {
+            if (super.getBasicAuth(token)) {
+                File file = new File();
                 User user = ur.findOneByUserId(super.getUserId(token));
                 Computer computer = cr.findOneByIdentifierHash(computerHash);
 
@@ -65,49 +74,24 @@ public class FileTransferController extends Authentication {
                 ServletFileUpload upload = new ServletFileUpload();
                 // Parse the request
                 FileItemIterator iter = upload.getItemIterator(request);
-
                 while (iter.hasNext()) {
-                    File file = new File();
+
                     FileItemStream item = iter.next();
                     InputStream stream = item.openStream();
                     String fieldName = item.getFieldName();
-                    
-                    if (item.isFormField() && fieldName.equals("privacy"))
-                    {
-                        
-                        //file.setFileAccess(item.getString());
-                        int privacy = Integer.parseInt(Streams.asString(stream));
-                        System.out.println(fieldName + ": " + privacy);
-                            
-                            if(!(privacy >= 0 || privacy <= 1))
-                            {
-                                file.setFileAccess((byte)0);
-                            }
-                            else
-                            {
-                                file.setFileAccess((byte)privacy);
-                            }
-                        }
-                    if (item.isFormField() && fieldName.equals("duration"))
-                    {
-                        int duration = Integer.parseInt(Streams.asString(stream));
-                            
-                            if(!(duration >= 0 || duration <= 60))
-                            {
-                                file.setExpirationTime(new Date(System.currentTimeMillis()+(duration*60*1000)));
-                            }
-                            else
-                            {
-                                file.setExpirationTime(new Date(System.currentTimeMillis()+(5*60*1000)));
-                            }
-                            System.out.println(fieldName + ": " + duration);
-                    }
-                    if (!item.isFormField() && fieldName.equals("file")) {
+
+                    if (item.isFormField() && fieldName.equals("privacy")) {
+                        if(isNumber(Streams.asString(stream))) {
+                            byte privacy = Byte.parseByte(Streams.asString(stream));
+
+                            if ((privacy >= 0) && (privacy <= 1)) file.setFileAccess(privacy);
+                            else file.setFileAccess((byte) 0);
+                        } else file.setFileAccess((byte) 0);
+                    } else if (!item.isFormField() && fieldName.equals("file")) {
                         String randCode = UrlTools.getBase64(file.getOriginalName());
                         file.setOriginalName(item.getName());
                         file.setStoredName(randCode + ".store");
                         file.setDownloadCode(randCode);
-                        //file.setFileAccess((byte) 0);
                         file.setFileStatus((byte) 0);
 
                         // Process the input stream
@@ -117,34 +101,33 @@ public class FileTransferController extends Authentication {
                         out.close();
 
                         file.setFileSize(new java.io.File(storeLoc + file.getStoredName()).length());
-
-                        fr.save(file);
-
-                       if(computer != null && user != null){
-                            Upload uploadDetails = new Upload();
-                            uploadDetails.setFileId(file);
-                            uploadDetails.setComputerId(computer);
-                            uploadDetails.setUserId(user);
-                            upr.save(uploadDetails);
-                        }
-                        return ResponseFactory.okResponse(file);
                     }
                 }
+                fr.save(file);
+
+                if (computer != null && user != null) {
+                    Upload uploadDetails = new Upload();
+                    uploadDetails.setFileId(file);
+                    uploadDetails.setComputerId(computer);
+                    uploadDetails.setUserId(user);
+                    upr.save(uploadDetails);
+                }
+
+                return ResponseFactory.okResponse(file);
             } else return ResponseFactory.unauthorizedResponse();
         } catch (FileUploadException e) {
             return ResponseFactory.failResponse("Upload File Failed");
         } catch (IOException e) {
             return ResponseFactory.failResponse("Server Failed To Process File");
         }
-        return ResponseFactory.failResponse("Something went wrong");
     }
-    
+
     @RequestMapping(value = "/download/{code}", method = RequestMethod.GET)
     public ApiResponseEntity getFile(@PathVariable("code") String code, HttpServletResponse response) {
         try {
             File file = fr.findOneByDownloadCode(code);
-            if(file != null) {
-                if((file.getFileStatus() == 0) && (file.getFileAccess() == 0)) {
+            if (file != null) {
+                if ((file.getFileStatus() == 0) && (file.getFileAccess() == 0)) {
                     response.setContentType("application/force-download");
                     response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getOriginalName() + "\"");
                     // get your file as InputStream
