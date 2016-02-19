@@ -19,13 +19,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Temporary File Upload Service</title>
+    <title>Temporary File Hosting Service</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/TFUS_Style.css" rel="stylesheet">
+    <link href="css/TFHS_Style.css" rel="stylesheet">
 
     <!-- Hover css for custom hover animations-->
     <link href= "css/hover.css" rel="stylesheet" media="all">
@@ -56,7 +56,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand page-scroll" href="#page-top">
-                <i class="fa fa-cloud"></i> T<span class="light extraSmall">emporary</span>F<span class="light extraSmall">ile</span>U<span class="light extraSmall">pload</span>S<span class="light extraSmall">ervice</span>
+                <i class="fa fa-cloud"></i> T<span class="light extraSmall">emporary</span>F<span class="light extraSmall">ile</span>H<span class="light extraSmall">osting</span>S<span class="light extraSmall">ervice</span>
             </a>
         </div>
 
@@ -92,7 +92,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">Temporary File Upload Service</h1>
+                    <h1 class="brand-heading">Temporary File Hosting Service</h1>
                     <p class="intro-text">Upload and Download Temporary Files</p>
                     <a class="white" href="#files"><i class="fa fa-4x fa-angle-double-down animated"></i></a>
                 </div>
@@ -229,10 +229,10 @@
 <section id="about" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h2>About Temporary File Upload Service</h2>
+            <h2>About Temporary File Hosting Service</h2>
             <hr class="TFUS"><br>
-            <p><strong>Temporary File Upload Service (TFUS)</strong> is an application that allows users to upload and download files with temporary life times</a>. Users are able to upload files with specific life times and privacy settings.</p>
-            <p>TFSU allows users to share files temporarily allowing space to be freed up and reused for new files.</p>
+            <p><strong>Temporary File Hosting Service (TFHS)</strong> is an application that allows users to upload and download files with temporary life times</a>. Users are able to upload files with specific life times and privacy settings.</p>
+            <p>TFHS allows users to share files temporarily allowing space to be freed up and reused for new files.</p>
         </div>
     </div>
 </section>
@@ -242,9 +242,9 @@
     <div class="download-section">
         <div class="container">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Download TFUS</h2>
-                <p>In order to upload files to TFUS you must download the application and register for an account</p>
-                <a href="#" class="btn btn-default btn-lg">Download TFUS App</a>
+                <h2>Download TFHS</h2>
+                <p>In order to upload files to TFHS you must download the application and register for an account</p>
+                <a href="#" class="btn btn-default btn-lg">Download TFHS App</a>
             </div>
         </div>
     </div>
@@ -254,9 +254,9 @@
 <section id="contact" class="container content-section text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
-            <h2>Contact TFUS</h2>
+            <h2>Contact TFHS</h2>
             <hr class="TFUS"><br>
-            <p>Please email us if you have any questions or concerns regarding the Temporary File Upload Service</p>
+            <p>Please email us if you have any questions or concerns regarding the Temporary File Hosting Service</p>
             <p><a href="mailto:feedback@startbootstrap.com">skyllama@yandex.com</a>
             </p>
         </div>
@@ -268,7 +268,7 @@
 <!-- Footer -->
 <footer>
     <div class="container text-center">
-        <p>Copyright &copy; TFUS 2016</p>
+        <p>Copyright &copy; TFHS 2016</p>
     </div>
 </footer>
 
