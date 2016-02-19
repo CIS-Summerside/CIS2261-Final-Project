@@ -169,6 +169,6 @@ public class FileTransferController extends Authentication {
             System.out.println("Error writing file to output stream. Filename was '{}'");
             return ResponseFactory.failResponse("Error processing file for download");
         }
-        return ResponseFactory.okResponse("File downloading");
+        return null;
     }
 }
