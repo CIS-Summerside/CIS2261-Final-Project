@@ -115,6 +115,15 @@ public class FileTransferController extends Authentication {
                         file.setFileSize(new java.io.File(storeLoc + file.getStoredName()).length());
                     }
                 }
+
+                if (file.getFileAccess() == null){
+                    file.setFileAccess((byte) 0);
+                }
+
+                if (file.getFileStatus() == null){
+                    file.setFileStatus((byte) 0);
+                }
+                
                 fr.save(file);
 
                 if (computer != null && user != null) {
