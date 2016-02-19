@@ -15,3 +15,21 @@ C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\Win
 C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.csproj.GenerateResource.Cache
 C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.exe
 C:\Users\compa\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.pdb
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Release\TFHS Windows Client.exe.config
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Release\TFHS Windows Client.exe
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Release\TFHS Windows Client.pdb
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Release\Newtonsoft.Json.dll
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\bin\Release\Newtonsoft.Json.xml
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.csprojResolveAssemblyReference.cache
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.Api.EndpointRefs.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.Properties.Resources.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.Translations.strings.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.UI.AboutDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.UI.SettingsDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.UI.LoginDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.UI.RegistrationDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.UI.UploadDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.UI.UploadingDialog.resources
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\WindowsClient.csproj.GenerateResource.Cache
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\TFHS Windows Client.exe
+C:\Users\Connor\Documents\Programming\CIS2261-Final-Project\src\WindowsClient\WindowsClient\WindowsClient\obj\Release\TFHS Windows Client.pdb

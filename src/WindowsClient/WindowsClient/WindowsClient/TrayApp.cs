@@ -28,7 +28,6 @@ namespace WindowsClient
             mainTrayMenu.MenuItems.Add(new MenuItem("Upload File", Upload));
             mainTrayMenu.MenuItems.Add(new MenuItem("-"));
             mainTrayMenu.MenuItems.Add(new MenuItem("Login/Logout", Login));
-            mainTrayMenu.MenuItems.Add(new MenuItem("Settings", Settings));
             mainTrayMenu.MenuItems.Add(new MenuItem("About", About));
             mainTrayMenu.MenuItems.Add(new MenuItem(strings.Exit, Exit));
 

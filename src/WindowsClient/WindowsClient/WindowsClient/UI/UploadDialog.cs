@@ -71,12 +71,20 @@ namespace WindowsClient.UI
                 }
 
                 duration = numericUpDown1.Value.ToString();
-                FileTools.Upload(Api.EndpointRefs.uploadURL, privacy, duration, name, file, buffer);
+                UploadingDialog upDiag = new UploadingDialog();
+                upDiag.Show();
+                bool upload = FileTools.Upload(Api.EndpointRefs.uploadURL, privacy, duration, name, file, buffer);
+                if (upload)
+                {
+                    this.Close();
+                }
+                upDiag.Close();
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Close();
         }
     }
 }

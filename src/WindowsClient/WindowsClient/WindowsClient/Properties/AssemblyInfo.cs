@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsClient")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("TFHS Windows Client")]
+[assembly: AssemblyDescription("http://www.tfhs.ddns.net")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsClient")]
+[assembly: AssemblyCompany("CIS Summerside")]
+[assembly: AssemblyProduct("TFHS Windows Client")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

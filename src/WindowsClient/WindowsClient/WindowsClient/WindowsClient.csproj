@@ -8,10 +8,25 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WindowsClient</RootNamespace>
-    <AssemblyName>WindowsClient</AssemblyName>
+    <AssemblyName>TFHS Windows Client</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -105,6 +120,12 @@
     <Compile Include="UI\UploadDialog.Designer.cs">
       <DependentUpon>UploadDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UploadingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UploadingDialog.Designer.cs">
+      <DependentUpon>UploadingDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Api\EndpointRefs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EndpointRefs.Designer.cs</LastGenOutput>
@@ -138,6 +159,9 @@
     <EmbeddedResource Include="UI\UploadDialog.resx">
       <DependentUpon>UploadDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UploadingDialog.resx">
+      <DependentUpon>UploadingDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -156,7 +180,18 @@
   <ItemGroup>
     <None Include="Resources\Main.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

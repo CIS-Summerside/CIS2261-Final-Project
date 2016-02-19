@@ -18,7 +18,7 @@ namespace WindowsClient.Tools
         // <form action="{url}" method="post" enctype="multipart/form-data">
         //     <input type="file" name="file" />
         // </form>
-        public static System.IO.Stream Upload(string url, string privacy, string duration, string filename, Stream fileStream, byte[] fileBytes)
+        public static bool Upload(string url, string privacy, string duration, string filename, Stream fileStream, byte[] fileBytes)
         {
             // Convert each of the three inputs into HttpContent objects
 
@@ -68,11 +68,7 @@ namespace WindowsClient.Tools
                         break;
                 }
                 // equivalent of pressing the submit button on the form
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-                return response.Content.ReadAsStreamAsync().Result;
+                return response.IsSuccessStatusCode;
             }
         }
     }

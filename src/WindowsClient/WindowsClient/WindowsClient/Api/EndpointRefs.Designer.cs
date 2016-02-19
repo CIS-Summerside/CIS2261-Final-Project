@@ -61,7 +61,7 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8080/api/metrics/computer/add.
+        ///   Looks up a localized string similar to http://tfhs.ddns.net:8080/api/metrics/computer/add.
         /// </summary>
         internal static string computerUrl {
             get {
@@ -70,7 +70,7 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8080/api/files/download/.
+        ///   Looks up a localized string similar to http://tfhs.ddns.net:8080/api/files/download/.
         /// </summary>
         internal static string downloadURL {
             get {
@@ -79,7 +79,7 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8080/api/user/login.
+        ///   Looks up a localized string similar to http://tfhs.ddns.net:8080/api/user/login.
         /// </summary>
         internal static string loginURL {
             get {
@@ -88,7 +88,7 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8080/api/user/logout.
+        ///   Looks up a localized string similar to http://tfhs.ddns.net:8080/api/user/logout.
         /// </summary>
         internal static string logoutURL {
             get {
@@ -97,7 +97,7 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8080/api/user/add.
+        ///   Looks up a localized string similar to http://tfhs.ddns.net:8080/api/user/add.
         /// </summary>
         internal static string registerURL {
             get {
@@ -106,7 +106,7 @@ namespace WindowsClient.Api {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:8080/api/files/upload.
+        ///   Looks up a localized string similar to http://tfhs.ddns.net:8080/api/files/upload.
         /// </summary>
         internal static string uploadURL {
             get {
