@@ -147,9 +147,13 @@
 
                     $fileTitle = $file['originalName'];
                     $fileSizeString = "";
+                    $fileExpiration = $file['expirationTime'];
 
                     //determine file size and label appropriately
-                    if($file['fileSize'] >= 1000 && $file['fileSize'] < 1000000){
+                    if($file['fileSize'] < 1000){
+                        $fileSizeString = ($file['fileSize']). " B";
+                    }
+                    else if($file['fileSize'] >= 1000 && $file['fileSize'] < 1000000){
                         $fileSizeString = ($file['fileSize']/1000). " KB";
                     }
                     else if($file['fileSize'] >= 1000000 && $file['fileSize'] < 100000000 ){
@@ -206,15 +210,19 @@
                         case "png":
                             $fileImage = "img/thumbnail-images/Icons/file_type_icons_flat_-26.png";
                             break;
+                        case "html":
+                            $fileImage = "img/thumbnail-images/Icons/file_type_icons_flat_-26.png";
+                            break;
                         default:
                             $fileImage = "img/thumbnail-images/Icons/file_type_icons_flat_-13.png";
                     }
                     //Output thumbnail of file with file title and download link
                     echo '<div class="col-lg-3 col-md-4 col-xs-6 thumb hvr-grow" >
-                            <a class="thumbnail darkBack" href="http://localhost:8080/api/files/download/'.$file['downloadCode'].'">
+                            <a class="thumbnail darkBack" href="http://tfhs.ddns.net:8080/api/files/download/'.$file['downloadCode'].'">
                                 <div class="caption">
                                     <p>'.$fileTitle.'</p>
                                     <p>'.$fileSizeString.'</p>
+                                    <p>Expiration Time<br/> '.$fileExpiration.'</p>
                                 </div>
                                     <img class="img-responsive" src="'.$fileImage .'" alt="">
                             </a>
@@ -244,7 +252,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Download TFHS</h2>
                 <p>In order to upload files to TFHS you must download the application and register for an account</p>
-                <a href="#" class="btn btn-default btn-lg">Download TFHS App</a>
+                <a href="/TFHS%20Windows%20Client.zip" class="btn btn-default btn-lg">Download TFHS App</a>
             </div>
         </div>
     </div>

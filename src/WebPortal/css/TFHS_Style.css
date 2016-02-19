@@ -39,7 +39,12 @@ p {
 
 @media(min-width:768px) {
     p {
-        margin: 0 0 35px;
+        margin: 0 0 5px;
+        font-size: 20px;
+        line-height: 1.6;
+    }
+    p.caption {
+        margin: 0 0 15px;
         font-size: 20px;
         line-height: 1.6;
     }
@@ -408,6 +413,8 @@ body {
     height: 100%;
     color:#fff !important;
 }
+
+
 hr.TFUS{
     width: 40%;
 }
