@@ -1,0 +1,24 @@
+All project source code resides within the src/ directory in the same directory as this text file. Within
+the src/ folder there are four more folders, each one representing separate individual parts of the project.
+
+There parts do not directly interact with each other on a code level, they can be better looked at as sort of
+sub-projects that together provide all the needed features of the Temporary File Upload System.
+
+The directories and their contents are described below:
+
+/src/ApiServer - This directory contains all the Java/Spring code that forms the backbone of the project, the API.
+                 This is the code that directly interacts with the database and handles all user, tracking and 
+                 file upload functions.
+
+/src/FileTrimmer - This directory contains a single Python script, trim.py. This script runs as a cron job on
+                   on the server and is responsible for removing old files and changing their status in the
+                   database to make them not show up in lists of available files.
+
+/src/WebPortal - This directory contains all the code related to the website/web portal. It is used for our
+                 single page homepage and lists any and all available public files for download. It also allows
+                 users to download the Windows Client.
+
+/src/WindowsClient - The Windows Client is a desktop piece of software which lives in the system tray. This software
+                     directly communicates with the API server and is what allows users to register, login and
+                     upload files. The Windows client relies totally on the API server for almost all of its
+                     functionality.

@@ -1,0 +1,29 @@
+There are four distinct parts to this project, these are as follows:
+
+- The Spring based API Server
+- The Windows Desktop Client
+- The Website
+- The automatic file removal script.
+
+The API Server, Website and File Removal Script do not require you to manually run them. These are provided
+already configured running at (except the removal script which runs on the server, but is not accessible):
+
+Website: http://tfhs.ddns.net
+API: http://tfhs.ddns.net:8080
+
+The desktop client is preconfigured to use the remote resources and runs standalone on a user’s system. This
+client allows one to interact with the Temporary File Upload System and do various things such as register, 
+login, and upload files.
+
+A built release version of the desktop client is provided within the repository and if ready to run. In order
+to run it do the following:
+
+1) Locate the /bin directory in the same folder as this text document and open it.
+2) Locate the /TFHS Windows Client directory in the /bin directory and open it.
+3) Double click the "TFHS Windows Client.exe" executable in order to start the program.
+4) Once started the program will open itself in the system tray as an icon. To interact with the program,
+   right click this icon for various menu options.
+
+That should be all there is to running the program. To close it right click the icon and select exit,
+otherwise leave it open in your system tray.
+

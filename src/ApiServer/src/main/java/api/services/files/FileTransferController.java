@@ -123,7 +123,7 @@ public class FileTransferController extends Authentication {
                 if (file.getFileStatus() == null){
                     file.setFileStatus((byte) 0);
                 }
-                
+
                 fr.save(file);
 
                 if (computer != null && user != null) {
